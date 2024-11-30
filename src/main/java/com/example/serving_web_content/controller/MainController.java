@@ -20,4 +20,9 @@ public class MainController {
         model.addAttribute("items", items);
         return "mainPage";
     }
+
+    @GetMapping("/addItem")
+    public String addItem(Model model) {
+        return "addItem";
+    }
 }

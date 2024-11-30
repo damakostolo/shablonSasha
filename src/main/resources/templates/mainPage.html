@@ -133,17 +133,69 @@ h1 {
 
 <!-- Секция карточек товаров -->
 <div class="items-container" th:each="item : ${items}">
-    <div class="item-card">
+    <div class="item-card" th:id="${item.id}">
         <h3 th:text="${item.name}">Назва товару</h3>
-        <p>Кількість: <span th:text="${item.amount}">Немає даних</span></p>
+        <p>Кількість: <span class="amount" th:text="${item.amount}">Немає даних</span></p>
         <div class="item-actions">
-            <button class="decrease-btn" onclick="decreaseQuantity()">-</button>
-                <input type="number">
-            <button class="increase-btn" onclick="increaseQuantity()">+</button>
+            <button class="decrease-btn" onclick="updateAmount(this, -1)">-</button>
+            <label>
+                <input type="number" value="0" class="quantity-input">
+            </label>
+            <button class="increase-btn" onclick="updateAmount(this, 1)">+</button>
         </div>
     </div>
 </div>
 
+<script>
+    async function updateAmount(button, operation) {
+        // Получаем родительский элемент карточки
+        const card = button.closest('.item-card');
 
+        // Получаем ID товара
+        const itemId = card.dataset.id;
+
+        // Получаем текущее значение количества
+        const amountSpan = card.querySelector('.amount');
+        const quantityInput = card.querySelector('.quantity-input');
+        const inputValue = parseInt(quantityInput.value) || 0;
+
+        // Считаем новое значение
+        let newAmount = parseInt(amountSpan.textContent) || 0;
+
+        if (operation === 1) {
+            newAmount += inputValue;
+        } else if (operation === -1) {
+            newAmount -= inputValue;
+        }
+
+        if (newAmount < 0) {
+            alert('Кількість не може бути від\'ємною!');
+            return;
+        }
+
+        // Отправляем PUT-запрос на сервер
+        try {
+            const response = await fetch(`/api/items/${itemId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount: newAmount })
+            });
+
+            if (response.ok) {
+                // Обновляем значение на странице
+                amountSpan.textContent = newAmount;
+                quantityInput.value = 0; // Сбрасываем инпут
+            } else {
+                alert('Помилка оновлення товару!'+ itemId);
+            }
+        } catch (error) {
+            console.error('Помилка запиту:', error);
+            alert('Не вдалося оновити товар!');
+        }
+    }
+</script>
 </body>
+
 </html>

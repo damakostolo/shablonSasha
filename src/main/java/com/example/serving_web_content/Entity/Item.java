@@ -14,7 +14,7 @@ public class Item {
     private String name;
 
     @Column(nullable = false) // Колонка "amount" не может быть null
-    private int amount;
+    private Long amount;
 
     // Геттеры и сеттеры
     public Long getId() {
@@ -33,11 +33,11 @@ public class Item {
         this.name = name;
     }
 
-    public int getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setAmount(Long amount) {
+        this.amount = (long) amount;
     }
 }

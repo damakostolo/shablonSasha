@@ -29,4 +29,8 @@ public class ItemService {
     public void deleteItem(Long id) {
         itemRepository.deleteById(id);
     }
+
+    public Item findById(Long id) {
+        return itemRepository.findById(id).orElse(null);
+    }
 }
