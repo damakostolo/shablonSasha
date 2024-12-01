@@ -35,6 +35,8 @@ public class AddController {
     public ResponseEntity<Item> updateItemAmount(@PathVariable Long id, @RequestBody UpdateAmountRequest request) {
         // Получаем существующий товар
         Item item = itemService.findById(id);
+        System.out.print(id);
+        System.out.print(item);
         if (item == null) {
             return ResponseEntity.notFound().build();
         }

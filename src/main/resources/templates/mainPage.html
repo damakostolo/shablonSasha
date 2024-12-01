@@ -4,131 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Головна сторінка</title>
+    <link href="/css/main.css" rel="stylesheet">
+
 </head>
-
-<style>
-    /* Общие стили */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-h1 {
-    text-align: center;
-    margin: 20px 0;
-}
-
-/* Секция фильтров */
-.filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.filters input {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    margin-right: 10px;
-}
-
-.filters button {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.filters button:hover {
-    background-color: #0056b3;
-}
-
-/* Контейнер карточек */
-.items-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-}
-
-/* Карточка товара */
-.item-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 250px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-
-.item-card h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: #222;
-}
-
-.item-card p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #555;
-}
-
-/* Кнопки действий */
-.item-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-.item-actions button {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.decrease-btn {
-    background-color: #dc3545;
-}
-
-.decrease-btn:hover {
-    background-color: #c82333;
-}
-
-.increase-btn {
-    background-color: #28a745;
-}
-
-.increase-btn:hover {
-    background-color: #218838;
-}
-
-</style>
 
 <body>
 <h1>Товари у магазині</h1>
 
 <!-- Секция фильтров -->
 <div class="filters">
-    <input type="text" placeholder="Введите название товара..." id="search">
-    <button onclick="applyFilters()">Поиск</button>
+    <label for="search">Пошук товару:</label>
+    <input type="text" placeholder="Введіть назву товару..." id="search" oninput="applyFilters()">
 </div>
 
 <!-- Секция карточек товаров -->
@@ -139,63 +25,14 @@ h1 {
         <div class="item-actions">
             <button class="decrease-btn" onclick="updateAmount(this, -1)">-</button>
             <label>
-                <input type="number" value="0" class="quantity-input">
+                <input type="number" value="1" min="1" class="quantity-input">
             </label>
             <button class="increase-btn" onclick="updateAmount(this, 1)">+</button>
         </div>
     </div>
 </div>
 
-<script>
-    async function updateAmount(button, operation) {
-        // Получаем родительский элемент карточки
-        const card = button.closest('.item-card');
-
-        // Получаем ID товара
-        const itemId = card.dataset.id;
-
-        // Получаем текущее значение количества
-        const amountSpan = card.querySelector('.amount');
-        const quantityInput = card.querySelector('.quantity-input');
-        const inputValue = parseInt(quantityInput.value) || 0;
-
-        // Считаем новое значение
-        let newAmount = parseInt(amountSpan.textContent) || 0;
-
-        if (operation === 1) {
-            newAmount += inputValue;
-        } else if (operation === -1) {
-            newAmount -= inputValue;
-        }
-
-        if (newAmount < 0) {
-            alert('Кількість не може бути від\'ємною!');
-            return;
-        }
-
-        // Отправляем PUT-запрос на сервер
-        try {
-            const response = await fetch(`/api/items/${itemId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ amount: newAmount })
-            });
-
-            if (response.ok) {
-                // Обновляем значение на странице
-                amountSpan.textContent = newAmount;
-                quantityInput.value = 0; // Сбрасываем инпут
-            } else {
-                alert('Помилка оновлення товару!'+ itemId);
-            }
-        } catch (error) {
-            console.error('Помилка запиту:', error);
-            alert('Не вдалося оновити товар!');
-        }
-    }
-</script>
+<script src="/css/js/main.js"></script>
 </body>
 
 </html>
