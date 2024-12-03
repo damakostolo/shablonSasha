@@ -33,4 +33,9 @@ public class ItemService {
     public Item findById(Long id) {
         return itemRepository.findById(id).orElse(null);
     }
+
+    public void deleteById(Long id) {
+        itemRepository.deleteById(id);
+    }
+
 }

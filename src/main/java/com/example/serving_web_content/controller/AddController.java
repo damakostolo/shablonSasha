@@ -31,9 +31,9 @@ public class AddController {
         return ResponseEntity.ok(savedItem);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItemAmount(@PathVariable Long id, @RequestBody UpdateAmountRequest request) {
-        // Получаем существующий товар
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+        // Проверяем, существует ли элемент
         Item item = itemService.findById(id);
         System.out.print(id);
         System.out.print(item);
@@ -41,25 +41,10 @@ public class AddController {
             return ResponseEntity.notFound().build();
         }
 
-        // Обновляем количество
-        item.setAmount(request.getAmount());
-        Item updatedItem = itemService.saveItem(item);
+        // Удаляем элемент
+        itemService.deleteById(id);
 
-        // Возвращаем обновленный товар
-        return ResponseEntity.ok(updatedItem);
+        // Возвращаем статус "Нет содержимого"
+        return ResponseEntity.noContent().build();
     }
-}
-
-// DTO для приема количества
-class UpdateAmountRequest {
-    private Long amount;
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
-
 }
