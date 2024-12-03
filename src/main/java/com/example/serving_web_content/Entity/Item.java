@@ -16,6 +16,14 @@ public class Item {
     @Column(nullable = false) // Колонка "amount" не может быть null
     private Long amount;
 
+    @Lob // Используется для хранения больших строк
+    @Column(nullable = false, columnDefinition="TEXT") // Колонка "description" не может быть null
+    private String description;
+
+    @Lob // Используется для хранения больших строк
+    @Column(nullable = false , columnDefinition="TEXT") // Колонка "src" не может быть null
+    private String src;
+
     // Геттеры и сеттеры
     public Long getId() {
         return id;
@@ -38,6 +46,22 @@ public class Item {
     }
 
     public void setAmount(Long amount) {
-        this.amount = (long) amount;
+        this.amount = amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
     }
 }

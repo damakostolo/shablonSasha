@@ -12,49 +12,26 @@ h1 {
     margin: 20px 0;
 }
 
-/* Секция фильтров */
-.filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.filters input {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    margin-right: 10px;
-}
-
-.filters button {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.filters button:hover {
-    background-color: #0056b3;
-}
 
 /* Контейнер карточек */
 .items-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+      display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+        gap: 20px;
+        padding: 20px;
+        align-items: stretch; /* Растягивает карточки по высоте */
 }
+
 
 /* Карточка товара */
 .item-card {
+    max-width: 200px; /* Максимальная ширина контейнера */
+
+
+    width: 100%; /* Уберите фиксированную ширину */
+    max-width: 300px; /* Ограничение максимальной ширины */
+    margin: 0 auto; /* Центрирование карточки */
+
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -70,10 +47,15 @@ h1 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.item-card h3 {
+.item-card a {
     margin: 0 0 10px;
     font-size: 18px;
     color: #222;
+    text-decoration: none;
+}
+
+.item-card a:hover{
+    text-decoration: underline;
 }
 
 .item-card p {
@@ -113,4 +95,40 @@ h1 {
 
 .increase-btn:hover {
     background-color: #218838;
+}
+
+/* Основной стиль для навбара */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* Темный фон */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Левые и правые секции */
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Ссылки в навбаре */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+/* Стили при наведении на ссылки */
+.nav-link:hover {
+    color: #ffa500; /* Оранжевый при наведении */
+}
+
+/* Контент под навбаром */
+.content {
+    margin: 20px;
+    font-family: Arial, sans-serif;
 }

@@ -3,8 +3,11 @@ package com.example.serving_web_content.controller;
 import com.example.serving_web_content.Entity.Item;
 import com.example.serving_web_content.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/api/addItems")
@@ -18,25 +21,27 @@ public class AddController {
     }
 
     @PostMapping
-    public ResponseEntity<Item> addItem(@RequestParam String text, @RequestParam Long number) {
+    public ResponseEntity<Item> addItem(@RequestParam String name, @RequestParam Long number, @RequestParam String description, @RequestParam String img) {
         // Создаем объект Item и заполняем данными
         Item item = new Item();
-        item.setName(text);
+        item.setName(name);
         item.setAmount(number);
+        item.setDescription(description);
+        item.setSrc(img);
 
         // Сохраняем объект через сервис
         Item savedItem = itemService.saveItem(item);
 
         // Возвращаем сохраненный объект
-        return ResponseEntity.ok(savedItem);
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .location(URI.create("/main"))
+                .build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItemAmount(@PathVariable Long id, @RequestBody UpdateAmountRequest request) {
         // Получаем существующий товар
         Item item = itemService.findById(id);
-        System.out.print(id);
-        System.out.print(item);
         if (item == null) {
             return ResponseEntity.notFound().build();
         }
