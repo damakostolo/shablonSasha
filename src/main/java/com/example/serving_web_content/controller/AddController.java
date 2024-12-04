@@ -1,13 +1,16 @@
 package com.example.serving_web_content.controller;
 
-import com.example.serving_web_content.Entity.Item;
+import com.example.serving_web_content.Entity.MaterialEntity;
 import com.example.serving_web_content.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+
 @RestController
-@RequestMapping("/api/addItems")
+@RequestMapping("/api/addMaterial")
 public class AddController {
 
     private final ItemService itemService;
@@ -18,26 +21,30 @@ public class AddController {
     }
 
     @PostMapping
-    public ResponseEntity<Item> addItem(@RequestParam String text, @RequestParam Long number) {
+    public ResponseEntity<MaterialEntity> addItem(@RequestParam String name, @RequestParam Long number, @RequestParam String description, @RequestParam String img) {
         // Создаем объект Item и заполняем данными
-        Item item = new Item();
-        item.setName(text);
-        item.setAmount(number);
+        MaterialEntity materialEntity = new MaterialEntity();
+        materialEntity.setName(name);
+        materialEntity.setAmount(number);
+        materialEntity.setDescription(description);
+        materialEntity.setSrc(img);
 
         // Сохраняем объект через сервис
-        Item savedItem = itemService.saveItem(item);
+        MaterialEntity savedMaterialEntity = itemService.saveItem(materialEntity);
 
         // Возвращаем сохраненный объект
-        return ResponseEntity.ok(savedItem);
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .location(URI.create("/main"))
+                .build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
         // Проверяем, существует ли элемент
-        Item item = itemService.findById(id);
+        MaterialEntity materialEntity = itemService.findById(id);
         System.out.print(id);
-        System.out.print(item);
-        if (item == null) {
+        System.out.print(materialEntity);
+        if (materialEntity == null) {
             return ResponseEntity.notFound().build();
         }
 

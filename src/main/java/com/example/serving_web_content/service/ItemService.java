@@ -1,8 +1,8 @@
 package com.example.serving_web_content.service;
 
 
-import com.example.serving_web_content.Entity.Item;
-import com.example.serving_web_content.repository.ItemRepository;
+import com.example.serving_web_content.Entity.MaterialEntity;
+import com.example.serving_web_content.repository.DBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,31 +11,31 @@ import java.util.List;
 @Service
 public class ItemService {
 
-    private final ItemRepository itemRepository;
+    private final DBRepository DBRepository;
 
     @Autowired
-    public ItemService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
+    public ItemService(DBRepository DBRepository) {
+        this.DBRepository = DBRepository;
     }
 
-    public List<Item> getAllItems() {
-        return itemRepository.findAll();
+    public List<MaterialEntity> getAllItems() {
+        return DBRepository.findAll();
     }
 
-    public Item saveItem(Item item) {
-        return itemRepository.save(item);
+    public MaterialEntity saveItem(MaterialEntity materialEntity) {
+        return DBRepository.save(materialEntity);
     }
 
     public void deleteItem(Long id) {
-        itemRepository.deleteById(id);
+        DBRepository.deleteById(id);
     }
 
-    public Item findById(Long id) {
-        return itemRepository.findById(id).orElse(null);
+    public MaterialEntity findById(Long id) {
+        return DBRepository.findById(id).orElse(null);
     }
 
     public void deleteById(Long id) {
-        itemRepository.deleteById(id);
+        DBRepository.deleteById(id);
     }
 
 }

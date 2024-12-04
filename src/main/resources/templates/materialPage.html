@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Детали товара</title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+<!-- Навигационная панель -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="/main" class="nav-link">Головна сторінка</a>
+    </div>
+    <div class="navbar-right">
+        <a href="/addMaterial" class="nav-link">Додавання товару</a>
+    </div>
+</nav>
+
+
+<h1>Детали товара</h1>
+
+<div th:if="${material != null}" class="product-details">
+    <!-- Отображение изображения -->
+    <img th:src="${material.src}" alt="Фото товара">
+    <p><strong>Название:</strong> <span th:text="${material.name}">Название товара</span></p>
+    <p><strong>Описание:</strong> <span th:text="${material.description}">Описание товара</span></p>
+    <p><strong>Количество:</strong> <span th:text="${material.amount}">Количество товара</span></p>
+    <button onclick="deleteItem(th:text='${material.id}')">Видалити</button>
+</div>
+
+
+<script src="/css/js/main.js"></script>
+
+</body>
+</html>

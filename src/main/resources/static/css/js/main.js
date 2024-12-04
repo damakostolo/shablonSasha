@@ -1,16 +1,9 @@
-async function deleteItem(button) {
-        // Получаем родительский элемент карточки
-        const card = button.closest('.item-card');
-
-        console.log(card)
-
-        // Получаем ID товара
-        const itemId = card.id;
+async function deleteItem(id) {
 
 
         // Отправляем PUT-запрос на сервер
         try {
-            const response = await fetch(`/api/addItems/${itemId}`, {
+            const response = await fetch(`/api/addItems/${id}`, {
                 method: 'PUT'
             });
 

@@ -9,26 +9,34 @@
 </head>
 
 <body>
+<!-- Навигационная панель -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="/main" class="nav-link">Головна сторінка</a>
+    </div>
+    <div class="navbar-right">
+        <a href="/addMaterial" class="nav-link">Додавання товару</a>
+    </div>
+</nav>
+
 <h1>Товари у магазині</h1>
 
-<!-- Секция фильтров -->
-<div class="filters">
-    <label for="search">Пошук товару:</label>
-    <input type="text" placeholder="Введіть назву товару..." id="search" oninput="applyFilters()">
-</div>
+
 
 <!-- Секция карточек товаров -->
-<div class="items-container" th:each="item : ${items}">
-    <div class="item-card" th:id="${item.id}">
-        <h3 th:text="${item.name}">Назва товару</h3>
-        <p>Кількість: <span class="amount" th:text="${item.amount}">Немає даних</span></p>
-        <div class="item-actions">
-            <button class="increase-btn" onclick="deleteItem(this)">delete</button>
-        </div>
-    </div>
+<div>
+
+
+<div  >
+    <a class="material-card" th:each="material : ${materials}" th:href="@{/materialPage/{id}(id=${material.id})}">
+        <h3 th:text="${material.name}">Назва товару</h3>
+        <img th:src="${material.src}" alt="Фото товара" style="max-width: 400px; max-height: 400px;margin: 0 auto">
+        <p>Кількість: <span class="amount" th:text="${material.amount}">Немає даних</span></p>
+    </a>
+</div>
 </div>
 
-<script src="/css/js/main.js"></script>
+
 </body>
 
 </html>
