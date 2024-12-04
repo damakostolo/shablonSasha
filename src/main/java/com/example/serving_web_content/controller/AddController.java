@@ -39,7 +39,7 @@ public class AddController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItemAmount(@PathVariable Long id, @RequestBody UpdateAmountRequest request) {
+    public ResponseEntity<Item> updateItemAmount(@PathVariable Long id, @RequestBody UpdateAmountController request) {
         // Получаем существующий товар
         Item item = itemService.findById(id);
         if (item == null) {
@@ -56,7 +56,7 @@ public class AddController {
 }
 
 // DTO для приема количества
-class UpdateAmountRequest {
+class UpdateAmountController {
     private Long amount;
 
     public Long getAmount() {
