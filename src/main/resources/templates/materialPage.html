@@ -26,7 +26,7 @@
     <p><strong>Название:</strong> <span th:text="${material.name}">Название товара</span></p>
     <p><strong>Описание:</strong> <span th:text="${material.description}">Описание товара</span></p>
     <p><strong>Количество:</strong> <span th:text="${material.amount}">Количество товара</span></p>
-    <button onclick="deleteItem(th:text='${material.id}')">Видалити</button>
+    <button class="deleteBtn" th:id="${material.id}" onclick="deleteMaterial(this)">Видалити</button>
 </div>
 
 

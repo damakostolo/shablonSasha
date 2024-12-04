@@ -26,9 +26,6 @@ public class ItemService {
         return DBRepository.save(materialEntity);
     }
 
-    public void deleteItem(Long id) {
-        DBRepository.deleteById(id);
-    }
 
     public MaterialEntity findById(Long id) {
         return DBRepository.findById(id).orElse(null);

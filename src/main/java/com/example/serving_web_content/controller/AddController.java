@@ -39,12 +39,10 @@ public class AddController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
-        // Проверяем, существует ли элемент
-        MaterialEntity materialEntity = itemService.findById(id);
-        System.out.print(id);
-        System.out.print(materialEntity);
-        if (materialEntity == null) {
+    public ResponseEntity<MaterialEntity> deleteMaterial(@PathVariable Long id){
+        // Получаем существующий товар
+        MaterialEntity material = itemService.findById(id);
+        if (material == null) {
             return ResponseEntity.notFound().build();
         }
 
