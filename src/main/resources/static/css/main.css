@@ -1,4 +1,4 @@
-/* Общие стили */
+/* Основные стили для страницы */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,125 +10,113 @@ body {
 h1 {
     text-align: center;
     margin: 20px 0;
+    font-size: 2rem;
 }
-
 
 /* Контейнер карточек */
-.items-container {
-      display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
-        gap: 20px;
-        padding: 20px;
-        align-items: stretch; /* Растягивает карточки по высоте */
+.wallpaper-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивные колонки */
+    gap: 20px; /* Отступы между карточками */
+    margin: 20px auto;
+    padding: 0 10px; /* Убираем прилипание к краям экрана на мобильных */
+    max-width: 1200px; /* Ограничение ширины контейнера */
 }
 
-
 /* Карточка товара */
-.item-card {
-    max-width: 200px; /* Максимальная ширина контейнера */
-
-
-    width: 100%; /* Уберите фиксированную ширину */
-    max-width: 300px; /* Ограничение максимальной ширины */
-    margin: 0 auto; /* Центрирование карточки */
-
+.wallpaper-card {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    width: 250px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.item-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.wallpaper-card:hover {
+    transform: scale(1.05); /* Легкая анимация */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.item-card a {
-    margin: 0 0 10px;
-    font-size: 18px;
+.wallpaper-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px; /* Скругление для изображения */
+}
+
+.wallpaper-card a {
+    margin: 10px 0;
+    font-size: 1.2rem;
     color: #222;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.item-card a:hover{
+.wallpaper-card a:hover {
     text-decoration: underline;
+    color: #ffa500; /* Оранжевый цвет при наведении */
 }
 
-.item-card p {
+.wallpaper-card p {
     margin: 10px 0;
-    font-size: 16px;
+    font-size: 1rem;
     color: #555;
 }
 
-/* Кнопки действий */
-.item-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-.item-actions button {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.decrease-btn {
-    background-color: #dc3545;
-}
-
-.decrease-btn:hover {
-    background-color: #c82333;
-}
-
-.increase-btn {
-    background-color: #28a745;
-}
-
-.increase-btn:hover {
-    background-color: #218838;
-}
-
-/* Основной стиль для навбара */
+/* Стили навбара */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333; /* Темный фон */
+    background-color: #2F4F4F;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Левые и правые секции */
-.navbar-left, .navbar-right {
+.navbar-left,
+.navbar-right {
     display: flex;
     align-items: center;
 }
 
-/* Ссылки в навбаре */
 .nav-link {
-    color: white;
+    color: #fff;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 18px;
-    transition: color 0.3s;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-/* Стили при наведении на ссылки */
 .nav-link:hover {
-    color: #ffa500; /* Оранжевый при наведении */
+    color: #00FFFF;
 }
 
-/* Контент под навбаром */
+/* Адаптивный отступ для контента */
 .content {
     margin: 20px;
-    font-family: Arial, sans-serif;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .wallpaper-card {
+        padding: 15px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
 }

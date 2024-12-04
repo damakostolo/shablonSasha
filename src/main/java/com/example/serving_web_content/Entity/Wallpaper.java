@@ -3,8 +3,8 @@ package com.example.serving_web_content.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "items") // Имя таблицы в базе данных
-public class Item {
+@Table(name = "wallpapers") // Имя таблицы в базе данных
+public class Wallpaper {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Генерация ID

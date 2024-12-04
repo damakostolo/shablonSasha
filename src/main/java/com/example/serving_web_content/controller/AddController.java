@@ -1,7 +1,7 @@
 package com.example.serving_web_content.controller;
 
-import com.example.serving_web_content.Entity.Item;
-import com.example.serving_web_content.service.ItemService;
+import com.example.serving_web_content.Entity.Wallpaper;
+import com.example.serving_web_content.service.WallpaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/api/addItems")
+@RequestMapping("/api/addWallpapers")
 public class AddController {
 
-    private final ItemService itemService;
+    private final WallpaperService wallpaperService;
 
     @Autowired
-    public AddController(ItemService itemService) {
-        this.itemService = itemService;
+    public AddController(WallpaperService wallpaperService) {
+        this.wallpaperService = wallpaperService;
     }
 
     @PostMapping
-    public ResponseEntity<Item> addItem(@RequestParam String name, @RequestParam Long number, @RequestParam String description, @RequestParam String img) {
+    public ResponseEntity<Wallpaper> addWallpaper(@RequestParam String name, @RequestParam Long number, @RequestParam String description, @RequestParam String img) {
         // Создаем объект Item и заполняем данными
-        Item item = new Item();
-        item.setName(name);
-        item.setAmount(number);
-        item.setDescription(description);
-        item.setSrc(img);
+        Wallpaper wallpaper = new Wallpaper();
+        wallpaper.setName(name);
+        wallpaper.setAmount(number);
+        wallpaper.setDescription(description);
+        wallpaper.setSrc(img);
 
         // Сохраняем объект через сервис
-        Item savedItem = itemService.saveItem(item);
+        Wallpaper savedWallpaper = wallpaperService.saveItem(wallpaper);
 
         // Возвращаем сохраненный объект
         return ResponseEntity.status(HttpStatus.FOUND)
@@ -39,24 +39,24 @@ public class AddController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItemAmount(@PathVariable Long id, @RequestBody UpdateAmountRequest request) {
+    public ResponseEntity<Wallpaper> updateItemAmount(@PathVariable Long id, @RequestBody UpdateAmount request) {
         // Получаем существующий товар
-        Item item = itemService.findById(id);
-        if (item == null) {
+        Wallpaper wallpaper = wallpaperService.findById(id);
+        if (wallpaper == null) {
             return ResponseEntity.notFound().build();
         }
 
         // Обновляем количество
-        item.setAmount(request.getAmount());
-        Item updatedItem = itemService.saveItem(item);
+        wallpaper.setAmount(request.getAmount());
+        Wallpaper updatedWallpaper = wallpaperService.saveItem(wallpaper);
 
         // Возвращаем обновленный товар
-        return ResponseEntity.ok(updatedItem);
+        return ResponseEntity.ok(updatedWallpaper);
     }
 }
 
 // DTO для приема количества
-class UpdateAmountRequest {
+class UpdateAmount {
     private Long amount;
 
     public Long getAmount() {

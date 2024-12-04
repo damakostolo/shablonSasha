@@ -1,0 +1,127 @@
+
+    /* Основной стиль для навбара */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #2F4F4F;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Левые и правые секции */
+    .navbar-left, .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ссылки в навбаре */
+    .nav-link {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+
+    /* Стили при наведении на ссылки */
+    .nav-link:hover {
+        color: #ffa500; /* Оранжевый при наведении */
+    }
+
+    /* Контент под навбаром */
+    .content {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Загальні стилі для тіла */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Стиль для заголовка */
+    h1 {
+        margin-top: 20px;
+        font-size: 2rem;
+        color: #444;
+    }
+
+    /* Стиль для форми */
+    form {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 90%;
+        max-width: 500px;
+        margin-top: 20px;
+    }
+
+    /* Стиль для лейблів */
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    /* Стиль для полів вводу */
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    /* Стиль для текстової області */
+    textarea {
+        height: 80px;
+        resize: none;
+    }
+
+    /* Стиль для кнопки */
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Вирівнювання тексту всередині форми */
+    form div {
+        margin-bottom: 15px;
+    }
+
+    /* Адаптивність для мобільних пристроїв */
+    @media (max-width: 768px) {
+        form {
+            width: 100%;
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+    }

@@ -1,0 +1,147 @@
+
+    /* Основной стиль для навбара */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #2F4F4F;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Левые и правые секции */
+    .navbar-left, .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ссылки в навбаре */
+    .nav-link {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+
+    /* Стили при наведении на ссылки */
+    .nav-link:hover {
+        color: #ffa500; /* Оранжевый при наведении */
+    }
+
+    /* Контент под навбаром */
+    .content {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+
+/* Загальні стилі для сторінки */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Світло-сірий фон */
+    color: #333; /* Темний текст */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Стиль для заголовка */
+h1 {
+    font-size: 2rem;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Стиль для контейнера товару */
+div[th\\:if="${wallpaper != null}"] {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Стиль для текстової інформації */
+p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+p strong {
+    color: #007bff; /* Синій колір для виділення */
+}
+
+/* Стиль для зображення */
+img {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Стиль для повідомлення про помилку */
+div[th\\:if="${error != null}"] p {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    div[th\\:if="${wallpaper != null}"] {
+        padding: 15px;
+    }
+
+    img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Кнопки действий */
+.item-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.item-actions button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.decrease-btn {
+    background-color: #dc3545;
+}
+
+.decrease-btn:hover {
+    background-color: #c82333;
+}
+
+.increase-btn {
+    background-color: #28a745;
+}
+
+.increase-btn:hover {
+    background-color: #218838;
+}

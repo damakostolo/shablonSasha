@@ -1,11 +1,11 @@
 async function updateAmount(button, operation) {
 // Получаем родительский элемент карточки
-const card = button.closest('.item-card');
+const card = button.closest('.cart');
 
 console.log(card)
 
 // Получаем ID товара
-const itemId = card.id;
+const Id = card.id;
 
 
 // Получаем текущее значение количества
@@ -33,7 +33,7 @@ console.log(newAmount)
 
 // Отправляем PUT-запрос на сервер
 try {
-const response = await fetch(`/api/addItems/${itemId}`, {
+const response = await fetch(`/api/addWallpapers/${Id}`, {
 method: 'PUT',
 headers: {
 'Content-Type': 'application/json'

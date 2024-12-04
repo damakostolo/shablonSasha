@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class ServingWebContentApplication {
+public class StartBuildingSait {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServingWebContentApplication.class, args);
+		SpringApplication.run(StartBuildingSait.class, args);
 	}
 
 
