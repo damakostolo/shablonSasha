@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/api/addMaterial")
+@RequestMapping("/materialPage/api/addMaterial")
 public class AddController {
 
     private final ItemService itemService;

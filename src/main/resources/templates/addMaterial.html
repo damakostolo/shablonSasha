@@ -21,7 +21,7 @@
 <h1>Товари в магазині</h1>
 
 <!-- Форма для відправки POST-запиту -->
-<form action="/api/addMaterial" method="post">
+<form action="/materialPage/api/addMaterial" method="post">
     <!-- Поле для вводу тексту -->
     <label for="text">Назва товару:</label>
     <input type="text" id="name" name="name" required>
@@ -33,12 +33,12 @@
     <br><br>
 
     <!-- Поле для вводу поссилання -->
-    <label for="number">Кількість:</label>
+    <label for="text">поссилання на зображення:</label>
     <input type="text" id="img" name="img" required>
     <br><br>
 
     <!-- Поле для вводу опису-->
-    <label for="number">Кількість:</label>
+    <label for="text">Опис:</label>
     <textarea id="description" name="description" required></textarea>
     <br><br>
 

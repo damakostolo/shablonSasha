@@ -9,7 +9,7 @@ async function deleteMaterial(button) {
 
         // Отправляем PUT-запрос на сервер
         try {
-            const response = await fetch(`api/${id}`, {
+            const response = await fetch(`api/addMaterial/${id}`, {
                 method: 'delete'
             });
 
