@@ -1,6 +1,6 @@
 package com.example.serving_web_content.controller;
 
-import com.example.serving_web_content.Entity.BookEntity;
+import com.example.serving_web_content.Entity.CryptoEntity;
 import com.example.serving_web_content.repository.LibraryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class GetController {
 
     @GetMapping("/main") // Получаем главную страницу
     public String mainPage(Model model) {
-        Iterable<BookEntity> books = libraryRepository.findAll();
+        Iterable<CryptoEntity> books = libraryRepository.findAll();
         System.out.println("Найденные товары: " + books);
         model.addAttribute("books", books);
         return "mainPage";
@@ -32,11 +32,11 @@ public class GetController {
     @GetMapping("/pageBook/{id}") // Получаем страницу книги и её описания
     public String pageBook(@PathVariable Long id, Model model) {
         // Находим товар по ID
-        Optional<BookEntity> optionalBook = libraryRepository.findById(id);
+        Optional<CryptoEntity> optionalBook = libraryRepository.findById(id);
 
         // Проверяем, найден ли товар
         if (optionalBook.isPresent()) {
-            BookEntity book = optionalBook.get();
+            CryptoEntity book = optionalBook.get();
             model.addAttribute("book", book); // Добавляем товар в модель
         } else {
             System.out.println("Товар с ID " + id + " не найден.");
@@ -49,11 +49,11 @@ public class GetController {
     @GetMapping("/updateBook/{id}") // Получаем страницу книги и её описания
     public String updateBook(@PathVariable Long id, Model model) {
         // Находим товар по ID
-        Optional<BookEntity> optionalBook = libraryRepository.findById(id);
+        Optional<CryptoEntity> optionalBook = libraryRepository.findById(id);
 
         // Проверяем, найден ли товар
         if (optionalBook.isPresent()) {
-            BookEntity book = optionalBook.get();
+            CryptoEntity book = optionalBook.get();
             model.addAttribute("book", book); // Добавляем товар в модель
         } else {
             System.out.println("Товар с ID " + id + " не найден.");

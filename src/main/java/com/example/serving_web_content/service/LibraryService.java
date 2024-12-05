@@ -1,7 +1,7 @@
 package com.example.serving_web_content.service;
 
 
-import com.example.serving_web_content.Entity.BookEntity;
+import com.example.serving_web_content.Entity.CryptoEntity;
 import com.example.serving_web_content.repository.LibraryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,24 +18,19 @@ public class LibraryService {
         this.libraryRepository = libraryRepository;
     }
 
-    public List<BookEntity> getAllItems() {
+    public List<CryptoEntity> getAllItems() {
         return libraryRepository.findAll();
     }
 
-    public BookEntity saveItem(BookEntity bookEntity) {
-        return libraryRepository.save(bookEntity);
+    public CryptoEntity saveItem(CryptoEntity cryptoEntity) {
+        return libraryRepository.save(cryptoEntity);
     }
 
     public void deleteBook(Long id) {
         libraryRepository.deleteById(id);
     }
 
-    public List<BookEntity> filterBooksByTitle(String title) {
-        // Поиск книг в репозитории, которые содержат часть введённого названия
-        return libraryRepository.findByTitleContainingIgnoreCase(title);
-    }
-
-    public BookEntity findById(Long id) {
+    public CryptoEntity findById(Long id) {
         return libraryRepository.findById(id).orElse(null);
     }
 }

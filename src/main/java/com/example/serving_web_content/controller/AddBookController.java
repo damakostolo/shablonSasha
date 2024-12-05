@@ -1,6 +1,6 @@
 package com.example.serving_web_content.controller;
 
-import com.example.serving_web_content.Entity.BookEntity;
+import com.example.serving_web_content.Entity.CryptoEntity;
 import com.example.serving_web_content.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,16 +24,16 @@ public class AddBookController {
     }
 
     @PostMapping // Додавання книги
-    public ResponseEntity<BookEntity> addItem(@RequestParam String title, @RequestParam String author, @RequestParam String description, @RequestParam String img) {
+    public ResponseEntity<CryptoEntity> addItem(@RequestParam String title, @RequestParam String author, @RequestParam String description, @RequestParam String img) {
         // Создаем объект Auto и заполняем данными
-        BookEntity bookEntity = new BookEntity();
-        bookEntity.setTitle(title);
-        bookEntity.setAuthor(author);
-        bookEntity.setDescription(description);
-        bookEntity.setImg(img);
+        CryptoEntity cryptoEntity = new CryptoEntity();
+        cryptoEntity.setTitle(title);
+        cryptoEntity.setAuthor(author);
+        cryptoEntity.setDescription(description);
+        cryptoEntity.setImg(img);
 
         // Сохраняем объект через сервис
-        BookEntity savedBookEntity = libraryService.saveItem(bookEntity);
+        CryptoEntity savedCryptoEntity = libraryService.saveItem(cryptoEntity);
 
         // Возвращаем сохраненный объект
         return ResponseEntity.status(HttpStatus.FOUND)

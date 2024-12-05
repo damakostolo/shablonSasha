@@ -1,6 +1,6 @@
 package com.example.serving_web_content.controller;
 
-import com.example.serving_web_content.Entity.BookEntity;
+import com.example.serving_web_content.Entity.CryptoEntity;
 import com.example.serving_web_content.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +22,9 @@ public class UpdateBookController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<BookEntity> updateBook( @PathVariable Long id, @RequestParam String title, @RequestParam String author, @RequestParam String description, @RequestParam String img) {
+    public ResponseEntity<CryptoEntity> updateBook(@PathVariable Long id, @RequestParam String title, @RequestParam String author, @RequestParam String description, @RequestParam String img) {
 
-        BookEntity existingBook = libraryService.findById(id);
+        CryptoEntity existingBook = libraryService.findById(id);
 
         // Проверяем, указаны ли обязательные параметры title и author
         if (title == null || title.trim().isEmpty() || author == null || author.trim().isEmpty()) {
