@@ -26,8 +26,9 @@ public class LibraryService {
         return libraryRepository.save(bookEntity);
     }
 
-    public void deleteItem(Long id) {
+    public BookEntity deleteBook(Long id) {
         libraryRepository.deleteById(id);
+        return null;
     }
 
     public BookEntity findById(Long id) {

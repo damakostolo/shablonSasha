@@ -1,0 +1,154 @@
+
+/* Основной стиль для навбара */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #808080;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень для навбара */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Левые и правые секции */
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Ссылки в навбаре */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.2s; /* Анимация изменения цвета и масштаба */
+}
+
+/* Стили при наведении на ссылки */
+.nav-link:hover {
+    color: #ffa500; /* Оранжевый при наведении */
+    transform: scale(1.1); /* Легкое увеличение при наведении */
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Вертикальный навбар */
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .nav-link {
+        margin: 5px 0; /* Уменьшение отступов для мобильной версии */
+        font-size: 16px;
+    }
+}
+
+
+/* Контент под навбаром */
+.content {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Основные стили для страницы */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #222;
+}
+
+/* Секция деталей товара */
+.bookInfo {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Стили для изображения */
+.bookInfo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Стили для текста */
+.bookInfo p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.bookInfo strong {
+    font-weight: bold;
+    color: #222;
+}
+
+/* Кнопки */
+.bookInfo .updateBtn,
+.bookInfo .deleteBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 10px;
+}
+
+.bookInfo .updateBtn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.bookInfo .updateBtn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.bookInfo .deleteBtn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.bookInfo .deleteBtn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Для адаптивности */
+@media (max-width: 768px) {
+    .bookInfo {
+        padding: 15px;
+    }
+
+    .bookInfo p {
+        font-size: 14px;
+    }
+
+    .bookInfo .updateBtn,
+    .bookInfo .deleteBtn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

@@ -68,67 +68,90 @@ h1 {
     font-family: Arial, sans-serif;
 }
 
-
-/* Стили для контейнера карточек */
-.items-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Три карточки в ряд */
-    gap: 20px; /* Отступы между карточками */
-    margin: 20px auto;
-    max-width: 1200px; /* Ограничение ширины контейнера */
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
-/* Стили для карточки товара */
-.auto-card {
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
 
-    background-color: #f9f9f9;
+/* Стили для контейнера с карточками товаров */
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+/* Стили для каждой карточки товара */
+.bookEntity-card {
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    width: 300px; /* Фиксированная ширина */
+    height: 450px; /* Фиксированная высота */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
     text-align: center;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Распределение элементов сверху вниз */
+    justify-content: space-between; /* Равномерное распределение внутри карточки */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    .items-container {
-        grid-template-columns: repeat(2, 1fr); /* Две карточки в ряд */
-    }
+.bookEntity-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 480px) {
-    .items-container {
-        grid-template-columns: 1fr; /* Одна карточка в ряд */
-    }
+/* Стили для ссылок на названия товара */
+.bookEntity-card a {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    height: 40px; /* Фиксированная высота */
+    overflow: hidden; /* Текст, который не помещается, будет обрезан */
+    text-overflow: ellipsis; /* Добавляет "..." для длинного текста */
+    white-space: nowrap; /* Не переносит текст на новую строку */
+}
+
+.bookEntity-card a:hover {
+    color: #0056b3;
 }
 
 /* Стили для изображения */
-.auto-card img {
-    max-width: 100%;
+.bookEntity-card img {
+    min-height: 350px;
+    max-height: 350px; /* Фиксированная высота изображения */
+    max-width: 100%; /* Адаптивная ширина */
     height: auto;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-/* Стили для ссылок */
-.auto-card a {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
-.auto-card a:hover {
-    color: #007bff;
+/* Стили для текста */
+.bookEntity-card p {
+    font-size: 14px;
+    color: #555;
+    height: 20px; /* Фиксированная высота для текста */
+    overflow: hidden; /* Обрезка длинного текста */
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-/* Стили для текста */
-.auto-card p {
-    margin: 10px 0;
-    font-size: 16px;
+/* Стили для описания товара */
+.bookEntity-card p {
+    font-size: 14px;
     color: #555;
 }

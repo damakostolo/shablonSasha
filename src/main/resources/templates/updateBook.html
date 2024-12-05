@@ -2,21 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ua">
 <head>
     <meta charset="UTF-8">
-    <title>Головна сторінка</title>
-    <link href="/css/addAuto.css" rel="stylesheet">
+    <title>Сторінка оновлення книги</title>
+    <link href="/css/addBook.css" rel="stylesheet">
 </head>
 <body>
 <!-- Навигационная панель -->
-<nav class="navbar">
-    <div class="navbar-left">
-        <a href="/main" class="nav-link">Головна сторінка</a>
-    </div>
-    <div class="navbar-right">
-        <a href="/addBook" class="nav-link">Додавання товару</a>
-    </div>
-</nav>
 
-<h1>Товари в магазині</h1>
+<div th:if="${book != null}" class="bookInfo" th:id="${book.id}"></div>
+
+<h1>Оновлення книги</h1>
 
 <!-- Форма для відправки POST-запиту -->
 <form th:action="@{/api/bookUpdate/{id}(id=${book.id})}" method="POST">
