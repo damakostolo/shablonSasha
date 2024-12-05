@@ -26,9 +26,13 @@ public class LibraryService {
         return libraryRepository.save(bookEntity);
     }
 
-    public BookEntity deleteBook(Long id) {
+    public void deleteBook(Long id) {
         libraryRepository.deleteById(id);
-        return null;
+    }
+
+    public List<BookEntity> filterBooksByTitle(String title) {
+        // Поиск книг в репозитории, которые содержат часть введённого названия
+        return libraryRepository.findByTitleContainingIgnoreCase(title);
     }
 
     public BookEntity findById(Long id) {
