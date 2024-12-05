@@ -25,7 +25,7 @@ public class CryptoEntity {
     @Column(nullable = false , columnDefinition="TEXT") // Колонка "src" не может быть null
     private String img;
 
-
+    // не сохранилось
 
 
 
