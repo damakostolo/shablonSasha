@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Детали товара</title>
+    <link href="/css/autoPage.css" rel="stylesheet">
+</head>
+<body>
+
+
+<h1>Детали товара</h1>
+
+<div th:if="${book != null}">
+    <!-- Отображение изображения -->
+    <img th:src="${book.img}" alt="Фото товара" style="max-width: 400px; max-height: 400px;">
+    <p><strong>Название:</strong> <span th:text="${book.title}">Название товара</span></p>
+    <p><strong>Автор:</strong> <span th:text="${book.author}">Количество товара</span></p>
+    <p><strong>Описание:</strong> <span th:text="${book.description}">Описание товара</span></p>
+
+    <a th:href="@{/updateBook/{id}(id=${book.id})}"><button class="updateBtn">Оновити товар</button></a>
+
+    <button class="deleteBtn">Видалити книгу</button>
+</div>
+
+</body>
+</html>

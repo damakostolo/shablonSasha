@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Головна сторінка</title>
+    <link href="/css/addAuto.css" rel="stylesheet">
+</head>
+<body>
+<!-- Навигационная панель -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="/main" class="nav-link">Головна сторінка</a>
+    </div>
+    <div class="navbar-right">
+        <a href="/addBook" class="nav-link">Додавання товару</a>
+    </div>
+</nav>
+
+<h1>Товари в магазині</h1>
+
+<!-- Форма для відправки POST-запиту -->
+<form action="/api/addBook" method="post">
+    <!-- Поле для вводу тексту -->
+    <label for="title">Назва товару:</label>
+    <input type="text" id="title" name="title" required>
+    <br><br>
+
+    <!-- Поле для вводу тексту -->
+    <label for="author">Автор:</label>
+    <input type="text" id="author" name="author" required>
+    <br><br>
+
+    <!-- Поле для вводу посилання -->
+    <label for="img">Посилання на фото товару:</label>
+    <input type="text" id="img" name="img" required>
+    <br><br>
+
+    <!-- Поле для вводу опису -->
+    <label for="description">Опис товару:</label>
+    <textarea id="description" name="description" required></textarea>
+    <br><br>
+
+    <!-- Кнопка для відправки -->
+    <button type="submit">Додати товар</button>
+</form>
+</body>
+</html>

@@ -3,26 +3,31 @@ package com.example.serving_web_content.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "items") // Имя таблицы в базе данных
-public class Item {
+@Table(name = "books") // Имя таблицы в базе данных
+public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Генерация ID
     private Long id;
 
-    @Column(nullable = false) // Колонка "name" не может быть null
-    private String name;
-
-    @Column(nullable = false) // Колонка "amount" не может быть null
-    private Long amount;
+    @Column(nullable = false) // Колонка "title" не может быть null
+    private String title;
 
     @Lob // Используется для хранения больших строк
     @Column(nullable = false, columnDefinition="TEXT") // Колонка "description" не может быть null
     private String description;
 
+
+    @Column(nullable = false) // Колонка "description" не может быть null
+    private String author;
+
     @Lob // Используется для хранения больших строк
     @Column(nullable = false , columnDefinition="TEXT") // Колонка "src" не может быть null
-    private String src;
+    private String img;
+
+
+
+
 
     // Геттеры и сеттеры
     public Long getId() {
@@ -33,21 +38,22 @@ public class Item {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Long getAmount() {
-        return amount;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAmount(Long amount) {
-        this.amount = amount;
+    public void setAuthor(String author) {
+        this.author = author;
     }
+
 
     public String getDescription() {
         return description;
@@ -57,11 +63,11 @@ public class Item {
         this.description = description;
     }
 
-    public String getSrc() {
-        return src;
+    public String getImg() {
+        return img;
     }
 
-    public void setSrc(String src) {
-        this.src = src;
+    public void setImg(String img) {
+        this.img = img;
     }
 }
