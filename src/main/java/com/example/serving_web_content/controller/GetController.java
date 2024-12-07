@@ -29,6 +29,8 @@ public class GetController {
         return "addCrypto";
     }
 
+
+
     @GetMapping("/pageBook/{id}") // Получаем страницу книги и её описания
     public String pageBook(@PathVariable Long id, Model model) {
         // Находим товар по ID
