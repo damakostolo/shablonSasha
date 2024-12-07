@@ -14,25 +14,16 @@
 <!-- Навигационная панель -->
 <div th:replace="navbar"></div>
 
-<form id="filterForm" method="GET" action="/main">
-    <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Назва книги..."
-    <button type="submit" id="filterButton">Шукати</button>
-</form>
-
 
 <h1>Книги</h1>
 
 <!-- Секция карточек товаров -->
 <div class="items-container" >
-    <div th:each="book : ${books}">
-        <div class="cryptoEntity-card" th:id="${book.id}">
-            <a th:text="${book.title}" th:href="@{/pageBook/{id}(id=${book.id})}">Назва товару</a>
-            <img th:src="${book.img}" alt="Фото Книги">
-            <p th:text="${book.author}" ></p>
+    <div th:each="crypto : ${cryptos}">
+        <div class="bookEntity-card" th:id="${crypto.id}">
+            <a th:text="${crypto.mark}" th:href="@{/pageCrypto/{id}(id=${crypto.id})}">Назва товару</a>
+            <img th:src="${crypto.img}" alt="Coin">
+            <p th:text="${crypto.price}" ></p>
         </div>
     </div>
 </div>

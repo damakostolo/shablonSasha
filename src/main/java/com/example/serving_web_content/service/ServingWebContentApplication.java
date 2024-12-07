@@ -2,35 +2,35 @@ package com.example.serving_web_content.service;
 
 
 import com.example.serving_web_content.Entity.CryptoEntity;
-import com.example.serving_web_content.repository.LibraryRepository;
+import com.example.serving_web_content.repository.CryptoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class LibraryService {
+public class ServingWebContentApplication {
 
-    private final LibraryRepository libraryRepository;
+    private final CryptoRepository cryptoRepository;
 
     @Autowired
-    public LibraryService(LibraryRepository libraryRepository) {
-        this.libraryRepository = libraryRepository;
+    public ServingWebContentApplication(CryptoRepository cryptoRepository) {
+        this.cryptoRepository = cryptoRepository;
     }
 
     public List<CryptoEntity> getAllItems() {
-        return libraryRepository.findAll();
+        return cryptoRepository.findAll();
     }
 
     public CryptoEntity saveItem(CryptoEntity cryptoEntity) {
-        return libraryRepository.save(cryptoEntity);
+        return cryptoRepository.save(cryptoEntity);
     }
 
     public void deleteBook(Long id) {
-        libraryRepository.deleteById(id);
+        cryptoRepository.deleteById(id);
     }
 
     public CryptoEntity findById(Long id) {
-        return libraryRepository.findById(id).orElse(null);
+        return cryptoRepository.findById(id).orElse(null);
     }
 }

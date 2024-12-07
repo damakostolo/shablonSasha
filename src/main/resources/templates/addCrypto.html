@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Сторінка додавання книги</title>
-    <link href="/css/addBook.css" rel="stylesheet">
+    <link href="/css/addCrypto.css" rel="stylesheet">
 </head>
 <body>
 <!-- Навигационная панель -->
@@ -12,15 +12,20 @@
 <h1>Додавання книги</h1>
 
 <!-- Форма для відправки POST-запиту -->
-<form action="/api/addBook" method="post">
+<form action="/api/addCrypto" method="post">
     <!-- Поле для вводу тексту -->
-    <label for="title">Назва товару:</label>
-    <input type="text" id="title" name="title" required>
+    <label for="name">Назва токена:</label>
+    <input type="text" id="name" name="name" required>
     <br><br>
 
     <!-- Поле для вводу тексту -->
-    <label for="author">Автор:</label>
-    <input type="text" id="author" name="author" required>
+    <label for="mark">Абревиатура токена:</label>
+    <input type="text" id="mark" name="mark" required>
+    <br><br>
+
+    <!-- Поле для вводу тексту -->
+    <label for="price">Ціна:</label>
+    <input type="number" id="price" name="price" required>
     <br><br>
 
     <!-- Поле для вводу посилання -->

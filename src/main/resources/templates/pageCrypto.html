@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Детали книги</title>
-    <link href="/css/pageBook.css" rel="stylesheet">
+    <link href="/css/pageCrypto.css" rel="stylesheet">
 </head>
 <body>
 
 
 <h1>Детали товара</h1>
 
-<div th:if="${book != null}" class="bookInfo" th:id="${book.id}">
+<div th:if="${crypto != null}" class="bookInfo" th:id="${crypto.id}">
     <!-- Отображение изображения -->
     <img th:src="${book.img}" alt="Фото товара" style="max-width: 400px; max-height: 400px;">
     <p><strong>Название:</strong> <span th:text="${book.title}">Название товара</span></p>

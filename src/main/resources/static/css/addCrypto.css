@@ -90,7 +90,7 @@ form label {
 }
 
 /* Стили для полей ввода */
-form input[type="text"],
+form input,
 form textarea {
     width: 100%;
     padding: 10px;

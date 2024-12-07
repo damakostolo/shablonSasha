@@ -1,7 +1,7 @@
 package com.example.serving_web_content.controller;
 
 import com.example.serving_web_content.Entity.CryptoEntity;
-import com.example.serving_web_content.repository.LibraryRepository;
+import com.example.serving_web_content.repository.CryptoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,52 +14,52 @@ import java.util.Optional;
 public class GetController {
 
     @Autowired
-    private LibraryRepository libraryRepository;
+    private CryptoRepository cryptoRepository;
 
     @GetMapping("/main") // Получаем главную страницу
     public String mainPage(Model model) {
-        Iterable<CryptoEntity> books = libraryRepository.findAll();
-        System.out.println("Найденные товары: " + books);
-        model.addAttribute("books", books);
+        Iterable<CryptoEntity> cryptos = cryptoRepository.findAll();
+        System.out.println("Найденные товары: " + cryptos);
+        model.addAttribute("cryptos", cryptos);
         return "mainPage";
     }
 
-    @GetMapping("/addBook") // Получаем страницу добавления книги
+    @GetMapping("/addCrypto") // Получаем страницу добавления книги
     public String addBook() {
-        return "addBook";
+        return "addCrypto";
     }
 
     @GetMapping("/pageBook/{id}") // Получаем страницу книги и её описания
     public String pageBook(@PathVariable Long id, Model model) {
         // Находим товар по ID
-        Optional<CryptoEntity> optionalBook = libraryRepository.findById(id);
+        Optional<CryptoEntity> optionalCrypto = cryptoRepository.findById(id);
 
         // Проверяем, найден ли товар
-        if (optionalBook.isPresent()) {
-            CryptoEntity book = optionalBook.get();
+        if (optionalCrypto.isPresent()) {
+            CryptoEntity book = optionalCrypto.get();
             model.addAttribute("book", book); // Добавляем товар в модель
         } else {
             System.out.println("Товар с ID " + id + " не найден.");
             model.addAttribute("error", "Товар не найден."); // Добавляем сообщение об ошибке
         }
 
-        return "pageBook"; // Возвращаем название HTML-шаблона
+        return "pageCrypto"; // Возвращаем название HTML-шаблона
     }
 
-    @GetMapping("/updateBook/{id}") // Получаем страницу книги и её описания
+    @GetMapping("/updateCrypto/{id}") // Получаем страницу книги и её описания
     public String updateBook(@PathVariable Long id, Model model) {
         // Находим товар по ID
-        Optional<CryptoEntity> optionalBook = libraryRepository.findById(id);
+        Optional<CryptoEntity> optionalCrypto = cryptoRepository.findById(id);
 
         // Проверяем, найден ли товар
-        if (optionalBook.isPresent()) {
-            CryptoEntity book = optionalBook.get();
-            model.addAttribute("book", book); // Добавляем товар в модель
+        if (optionalCrypto.isPresent()) {
+            CryptoEntity crypto = optionalCrypto.get();
+            model.addAttribute("crypto", crypto); // Добавляем товар в модель
         } else {
             System.out.println("Товар с ID " + id + " не найден.");
             model.addAttribute("error", "Товар не найден."); // Добавляем сообщение об ошибке
         }
 
-        return "updateBook"; // Возвращаем название HTML-шаблона
+        return "updateCrypto"; // Возвращаем название HTML-шаблона
     }
 }

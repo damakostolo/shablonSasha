@@ -10,23 +10,23 @@ public class CryptoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Генерация ID
     private Long id;
 
-    @Column(nullable = false) // Колонка "title" не может быть null
-    private String title;
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private Long price;
+
+
+    @Column(nullable = false)
+    private String mark;
 
     @Lob // Используется для хранения больших строк
     @Column(nullable = false, columnDefinition="TEXT") // Колонка "description" не может быть null
     private String description;
 
-
-    @Column(nullable = false) // Колонка "description" не может быть null
-    private String author;
-
     @Lob // Используется для хранения больших строк
     @Column(nullable = false , columnDefinition="TEXT") // Колонка "src" не может быть null
     private String img;
-
-    // не сохранилось
-
 
 
     // Геттеры и сеттеры
@@ -38,20 +38,28 @@ public class CryptoEntity {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getMark() {
+        return mark;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
 
