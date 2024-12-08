@@ -28,7 +28,7 @@
         <p>Кількість: <span class="amount" th:text="${item.amount}">Немає даних</span></p>
         <div class="item-actions">
             <button class="decrease-btn" onclick="updateAmount(this, -1)">-</button>
-                <input type="number" value="1" min="1" class="quantity-input">
+            <input type="number" value="1" min="1" class="quantity-input">
             <button class="increase-btn" onclick="updateAmount(this, 1)">+</button>
         </div>
     </div>

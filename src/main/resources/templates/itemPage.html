@@ -4,16 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Детали товара</title>
+    <link href="/css/itemPage.css" rel="stylesheet">
+
 </head>
 <body>
-<h1>Детали товара</h1>
+<!-- Навигационная панель -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="/main" class="nav-link">Головна сторінка</a>
+    </div>
+    <div class="navbar-right">
+        <a href="/addItem" class="nav-link">Додавання товару</a>
+    </div>
+</nav>
+
+
+<h1>Детали товару</h1>
 
 <div th:if="${item != null}">
     <!-- Отображение изображения -->
     <img th:src="${item.src}" alt="Фото товара" style="max-width: 400px; max-height: 400px;">
-    <p><strong>Название:</strong> <span th:text="${item.name}">Название товара</span></p>
-    <p><strong>Описание:</strong> <span th:text="${item.description}">Описание товара</span></p>
-    <p><strong>Количество:</strong> <span th:text="${item.amount}">Количество товара</span></p>
+    <p><strong>Назва:</strong> <span th:text="${item.name}">Название товара</span></p>
+    <p><strong>Опис:</strong> <span th:text="${item.description}">Описание товара</span></p>
+    <p><strong>Кількість:</strong> <span th:text="${item.amount}">Количество товара</span></p>
 
 </div>
 

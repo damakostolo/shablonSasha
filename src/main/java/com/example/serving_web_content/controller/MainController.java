@@ -26,7 +26,7 @@ public class MainController {
     }
 
     @GetMapping("/addItem")
-    public String addItem(Model model) {
+    public String addItem() {
         return "addItem";
     }
 
