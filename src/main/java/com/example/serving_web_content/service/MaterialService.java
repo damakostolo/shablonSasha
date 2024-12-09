@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ItemService {
+public class MaterialService {
 
     private final DBRepository DBRepository;
 
     @Autowired
-    public ItemService(DBRepository DBRepository) {
+    public MaterialService(DBRepository DBRepository) {
         this.DBRepository = DBRepository;
     }
 
