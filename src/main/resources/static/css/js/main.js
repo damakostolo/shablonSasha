@@ -13,6 +13,7 @@ async function deleteMaterial(button) {
             method: 'DELETE',
         });
 
+
         if (response) {
             // Перезагружаем страницу после успешного удаления
             window.location.href = '/main';
