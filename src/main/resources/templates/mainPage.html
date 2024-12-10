@@ -15,12 +15,12 @@
 <div th:replace="navbar"></div>
 
 
-<h1>Книги</h1>
+<h1>Активи</h1>
 
 <!-- Секция карточек товаров -->
-<div class="items-container" >
+<div class="crypto-container" >
     <div th:each="crypto : ${cryptos}">
-        <div class="bookEntity-card" th:id="${crypto.id}">
+        <div class="cryptoEntity-card" th:id="${crypto.id}">
             <a th:text="${crypto.mark}" th:href="@{/pageCrypto/{id}(id=${crypto.id})}">Назва товару</a>
             <img th:src="${crypto.img}" alt="Coin">
             <p th:text="${crypto.price}" ></p>

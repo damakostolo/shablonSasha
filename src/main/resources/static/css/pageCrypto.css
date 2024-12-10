@@ -54,101 +54,93 @@
     font-family: Arial, sans-serif;
 }
 
-
-/* Основные стили для страницы */
+/* Загальні стилі */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
 }
 
 h1 {
     text-align: center;
-    margin: 20px 0;
-    color: #222;
+    color: #4CAF50;
+    margin-top: 20px;
+    font-size: 2em;
 }
 
-/* Секция деталей товара */
-.bookInfo {
-    background-color: #fff;
+/* Стилі для контейнера товару */
+.cryptoInfo {
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    max-width: 800px;
+    border-radius: 8px;
+    max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Стили для изображения */
-.bookInfo img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
+.cryptoInfo img {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
 
-/* Стили для текста */
-.bookInfo p {
+.cryptoInfo p {
+    font-size: 1.1em;
     margin: 10px 0;
-    font-size: 16px;
+}
+
+.cryptoInfo strong {
     color: #555;
 }
 
-.bookInfo strong {
-    font-weight: bold;
-    color: #222;
-}
-
-/* Кнопки */
-.bookInfo .updateBtn,
-.bookInfo .deleteBtn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+/* Стилі для кнопок */
+button {
+    padding: 10px 15px;
+    font-size: 1em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    margin: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.bookInfo .updateBtn {
-    background-color: #007bff;
-    color: #fff;
+.updateBtn {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 10px;
 }
 
-.bookInfo .updateBtn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+.updateBtn:hover {
+    background-color: #45a049;
 }
 
-.bookInfo .deleteBtn {
-    background-color: #dc3545;
-    color: #fff;
+.deleteBtn {
+    background-color: #f44336;
+    color: white;
 }
 
-.bookInfo .deleteBtn:hover {
-    background-color: #c82333;
-    transform: scale(1.05);
+.deleteBtn:hover {
+    background-color: #e53935;
 }
 
-/* Для адаптивности */
+/* Адаптивність */
 @media (max-width: 768px) {
-    .bookInfo {
+    .cryptoInfo {
         padding: 15px;
     }
 
-    .bookInfo p {
-        font-size: 14px;
+    h1 {
+        font-size: 1.5em;
     }
 
-    .bookInfo .updateBtn,
-    .bookInfo .deleteBtn {
-        padding: 8px 16px;
-        font-size: 14px;
+    button {
+        font-size: 0.9em;
     }
+}
+
+.center-p {
+    text-align:center;
 }

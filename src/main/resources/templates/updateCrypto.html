@@ -2,27 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ua">
 <head>
     <meta charset="UTF-8">
-    <title>Сторінка оновлення книги</title>
+    <title>Сторінка оновлення токену</title>
     <link href="/css/addCrypto.css" rel="stylesheet">
 </head>
 <body>
 <!-- Навигационная панель -->
 
-<div th:if="${book != null}" class="bookInfo" th:id="${book.id}"></div>
+<div th:if="${crypto != null}" class="cryptoInfo" th:id="${crypto.id}"></div>
 
 <h1>Оновлення книги</h1>
 
 <!-- Форма для відправки POST-запиту -->
-<form th:action="@{/api/bookUpdate/{id}(id=${book.id})}" method="POST">
+<form th:action="@{/api/cryptoUpdate/{id}(id=${crypto.id})}" method="POST">
     <input type="hidden" name="_method" value="PUT">
     <!-- Поле для вводу тексту -->
-    <label for="title">Назва товару:</label>
-    <input type="text" id="title" name="title" required>
+    <label for="name">Назва токена:</label>
+    <input type="text" id="name" name="name" required>
     <br><br>
 
     <!-- Поле для вводу тексту -->
-    <label for="author">Автор:</label>
-    <input type="text" id="author" name="author" required>
+    <label for="mark">Абревиатура токена:</label>
+    <input type="text" id="mark" name="mark" required>
+    <br><br>
+
+    <!-- Поле для вводу тексту -->
+    <label for="price">Ціна:</label>
+    <input type="number" id="price" name="price" required>
     <br><br>
 
     <!-- Поле для вводу посилання -->
@@ -36,7 +41,7 @@
     <br><br>
 
     <!-- Кнопка для відправки -->
-    <button type="submit">Додати товар</button>
+    <button type="submit">Оновити токен</button>
 </form>
 </body>
 </html>

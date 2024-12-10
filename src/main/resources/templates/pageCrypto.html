@@ -11,19 +11,20 @@
 
 <h1>Детали товара</h1>
 
-<div th:if="${crypto != null}" class="bookInfo" th:id="${crypto.id}">
+<div th:if="${crypto != null}" class="cryptoInfo" th:id="${crypto.id}">
     <!-- Отображение изображения -->
-    <img th:src="${book.img}" alt="Фото товара" style="max-width: 400px; max-height: 400px;">
-    <p><strong>Название:</strong> <span th:text="${book.title}">Название товара</span></p>
-    <p><strong>Автор:</strong> <span th:text="${book.author}">Количество товара</span></p>
-    <p><strong>Описание:</strong> <span th:text="${book.description}">Описание товара</span></p>
+    <p class="center-p"><span th:text="${crypto.mark}">Название товара</span></p>
+    <img th:src="${crypto.img}" alt="Фото товара" style="max-width: 400px; max-height: 400px;">
+    <p><strong>Назва</strong> <span th:text="${crypto.name}">Название товара</span></p>
+    <p><strong>Ціна:</strong> <span th:text="${crypto.price}">Количество товара</span></p>
+    <p><strong>Опис:</strong> <span th:text="${crypto.description}">Описание товара</span></p>
 
-    <a th:href="@{/updateBook/{id}(id=${book.id})}"><button class="updateBtn">Оновити товар</button></a>
+    <a th:href="@{/updateCrypto/{id}(id=${crypto.id})}"><button class="updateBtn">Оновити товар</button></a>
 
-    <button class="deleteBtn" onclick="deleteBook(this)">Видалити книгу</button>
+    <button class="deleteBtn" onclick="deleteCrypto(this)">Видалити токен</button>
 </div>
 
 
-<script src="/css/js/deleteBook.js"></script>
+<script src="/css/js/deleteCrypto.js"></script>
 </body>
 </html>

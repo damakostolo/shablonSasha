@@ -1,17 +1,17 @@
-async function deleteBook(button) {
+async function deleteCrypto(button) {
 // Получаем родительский элемент карточки
-const card = button.closest('.bookInfo');
+const card = button.closest('.cryptoInfo');
 
 console.log(card)
 
 // Получаем ID товара
-const bookId = card.id;
+const Id = card.id;
 
 
 
 // Отправляем PUT-запрос на сервер
 try {
-const response = await fetch(`/api/deleteBook/${bookId}`, {
+const response = await fetch(`/api/deleteCrypto/${Id}`, {
     method: 'delete'
 });
 

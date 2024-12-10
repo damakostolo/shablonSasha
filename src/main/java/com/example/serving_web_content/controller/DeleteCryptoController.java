@@ -1,7 +1,7 @@
 package com.example.serving_web_content.controller;
 
 import com.example.serving_web_content.Entity.CryptoEntity;
-import com.example.serving_web_content.service.ServingWebContentApplication;
+import com.example.serving_web_content.service.CryptoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/deleteCrypto")
 public class DeleteCryptoController {
 
-    private final ServingWebContentApplication servingWebContentApplication;
+    private final CryptoService cryptoService;
 
     @Autowired
-    public DeleteCryptoController(ServingWebContentApplication servingWebContentApplication) {
-        this.servingWebContentApplication = servingWebContentApplication;
+    public DeleteCryptoController(CryptoService cryptoService) {
+        this.cryptoService = cryptoService;
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<CryptoEntity> updateBook(@PathVariable Long id) {
+    public ResponseEntity<CryptoEntity> deleteCrypto(@PathVariable Long id) {
 
         try {
-            servingWebContentApplication.deleteBook(id);
+            cryptoService.deleteBook(id);
             return ResponseEntity.ok().build();
 
         }

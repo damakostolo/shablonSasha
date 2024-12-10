@@ -25,20 +25,20 @@ public class GetController {
     }
 
     @GetMapping("/addCrypto") // Получаем страницу добавления книги
-    public String addBook() {
+    public String addCrypto() {
         return "addCrypto";
     }
 
 
-    @GetMapping("/pageBook/{id}") // Получаем страницу книги и её описания
-    public String pageBook(@PathVariable Long id, Model model) {
+    @GetMapping("/pageCrypto/{id}") // Получаем страницу книги и её описания
+    public String pageCrypto(@PathVariable Long id, Model model) {
         // Находим товар по ID
         Optional<CryptoEntity> optionalCrypto = cryptoRepository.findById(id);
 
         // Проверяем, найден ли товар
         if (optionalCrypto.isPresent()) {
-            CryptoEntity book = optionalCrypto.get();
-            model.addAttribute("book", book); // Добавляем товар в модель
+            CryptoEntity crypto = optionalCrypto.get();
+            model.addAttribute("crypto", crypto); // Добавляем товар в модель
         } else {
             System.out.println("Товар с ID " + id + " не найден.");
             model.addAttribute("error", "Товар не найден."); // Добавляем сообщение об ошибке
@@ -48,7 +48,7 @@ public class GetController {
     }
 
     @GetMapping("/updateCrypto/{id}") // Получаем страницу книги и её описания
-    public String updateBook(@PathVariable Long id, Model model) {
+    public String updateCrypto(@PathVariable Long id, Model model) {
         // Находим товар по ID
         Optional<CryptoEntity> optionalCrypto = cryptoRepository.findById(id);
 

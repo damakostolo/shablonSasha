@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ServingWebContentApplication {
+public class CryptoService {
 
     private final CryptoRepository cryptoRepository;
 
     @Autowired
-    public ServingWebContentApplication(CryptoRepository cryptoRepository) {
+    public CryptoService(CryptoRepository cryptoRepository) {
         this.cryptoRepository = cryptoRepository;
     }
 
