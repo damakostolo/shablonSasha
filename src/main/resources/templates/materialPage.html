@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Детали товара</title>
-    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/materialPage.css" rel="stylesheet">
 </head>
 <body>
 <!-- Навигационная панель -->
@@ -23,9 +23,9 @@
 <div th:if="${material != null}" class="product-details">
     <!-- Отображение изображения -->
     <img th:src="${material.src}" alt="Фото товара">
-    <p><strong>Название:</strong> <span th:text="${material.name}">Название товара</span></p>
-    <p><strong>Описание:</strong> <span th:text="${material.description}">Описание товара</span></p>
-    <p><strong>Количество:</strong> <span th:text="${material.amount}">Количество товара</span></p>
+    <p><strong>Назва:</strong> <span th:text="${material.name}">Название товара</span></p>
+    <p><strong>Опис:</strong> <span th:text="${material.description}">Описание товара</span></p>
+    <p><strong>Кількість:</strong> <span th:text="${material.amount}">Количество товара</span></p>
     <button class="deleteBtn" th:id="${material.id}" onclick="deleteMaterial(this)">Видалити</button>
 </div>
 

@@ -1,0 +1,115 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Навигационная панель */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007BFF;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Общий стиль для фона */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f7ff;
+    color: #003d66;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для навигационной панели */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007acc;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #cceeff;
+}
+
+/* Заголовок страницы */
+h1 {
+    text-align: center;
+    color: #005b99;
+    margin-top: 20px;
+}
+
+/* Стили для блока с деталями товара */
+.product-details {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border: 1px solid #b3d9ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.product-details img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+    border: 2px solid #b3d9ff;
+}
+
+.product-details p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-details strong {
+    color: #005b99;
+}
+
+/* Кнопка удаления */
+button.deleteBtn {
+    background-color: #005b99;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.deleteBtn:hover {
+    background-color: #003d66;
+}
+
+/* Скрипт и другие мелкие элементы */
+script {
+    display: none;
+}
