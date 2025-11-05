@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Створення заявки</title>
+    <link href="/css/createRequest.css" rel="stylesheet">
+</head>
+<body>
+<h1>Нова заявка сервісного центру</h1>
+<form action="/api/requests" method="post">
+    <label for="clientName">Ім'я клієнта:</label>
+    <input type="text" id="clientName" name="clientName" required>
+
+    <label for="contactInfo">Контактна інформація:</label>
+    <input type="text" id="contactInfo" name="contactInfo" required>
+
+    <label for="deviceType">Тип пристрою:</label>
+    <input type="text" id="deviceType" name="deviceType" required>
+
+    <label for="deviceModel">Модель / серійний номер:</label>
+    <input type="text" id="deviceModel" name="deviceModel" required>
+
+    <label for="issueDescription">Опис проблеми:</label>
+    <textarea id="issueDescription" name="issueDescription" required></textarea>
+
+    <label for="status">Поточний статус:</label>
+    <select id="status" name="status" required>
+        <option th:each="statusValue : ${statuses}" th:value="${statusValue}" th:text="${statusValue}"></option>
+    </select>
+
+    <button type="submit">Зберегти заявку</button>
+</form>
+</body>
+</html>

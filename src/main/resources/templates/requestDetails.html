@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі заявки</title>
+    <link href="/css/requestDetails.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="/requests" class="nav-link">Список заявок</a>
+    </div>
+    <div class="navbar-right">
+        <a href="/requests/new" class="nav-link">Створити заявку</a>
+    </div>
+</nav>
+
+<h1>Деталі заявки</h1>
+
+<div th:if="${request != null}" class="request-details">
+    <p><strong>Клієнт:</strong> <span th:text="${request.clientName}">Ім'я клієнта</span></p>
+    <p><strong>Контакти:</strong> <span th:text="${request.contactInfo}">Контактна інформація</span></p>
+    <p><strong>Пристрій:</strong> <span th:text="${request.deviceType} + ' ' + ${request.deviceModel}">Тип пристрою</span></p>
+    <p><strong>Опис проблеми:</strong></p>
+    <p class="description" th:text="${request.issueDescription}">Опис проблеми</p>
+    <p><strong>Статус ремонту:</strong> <span class="status" th:text="${request.status}">Статус</span></p>
+    <button class="deleteBtn" th:id="${request.id}" onclick="deleteRequest(this)">Видалити заявку</button>
+</div>
+
+<div th:if="${request == null}" class="request-details">
+    <p th:text="${error}">Заявку не знайдено.</p>
+</div>
+
+<script src="/css/js/request-actions.js"></script>
+
+</body>
+</html>
