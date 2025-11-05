@@ -1,41 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ua">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
 
 <head>
     <meta charset="UTF-8">
-    <title>Головна сторінка</title>
+    <title>Система обліку заявок</title>
     <link href="/css/main.css" rel="stylesheet">
-
 </head>
 
 <body>
-<!-- Навигационная панель -->
 <nav class="navbar">
     <div class="navbar-left">
-        <a href="/main" class="nav-link">Головна сторінка</a>
+        <a href="/requests" class="nav-link">Список заявок</a>
     </div>
     <div class="navbar-right">
-        <a href="/addMaterial" class="nav-link">Додавання товару</a>
+        <a href="/requests/new" class="nav-link">Створити заявку</a>
     </div>
 </nav>
 
-<h1>Товари у магазині</h1>
+<h1>Заявки сервісного центру</h1>
 
+<div class="empty-state" th:if="${#lists.isEmpty(requests)}">
+    <p>Наразі немає жодної заявки. Створіть першу заявку, щоб почати облік.</p>
+    <a class="create-link" href="/requests/new">Створити заявку</a>
+</div>
 
-
-<!-- Секция карточек товаров -->
-<div>
-
-
-<div  >
-    <a class="material-card" th:each="material : ${materials}" th:href="@{/materialPage/{id}(id=${material.id})}">
-        <h3 th:text="${material.name}">Назва товару</h3>
-        <img th:src="${material.src}" alt="Фото товара" style="max-width: 400px; max-height: 400px;margin: 0 auto">
-        <p>Кількість: <span class="amount" th:text="${material.amount}">Немає даних</span></p>
+<div class="items-container" th:if="${!#lists.isEmpty(requests)}">
+    <a class="request-card" th:each="request : ${requests}" th:href="@{/requests/{id}(id=${request.id})}">
+        <h3 th:text="${request.clientName}">Ім'я клієнта</h3>
+        <p><strong>Пристрій:</strong> <span th:text="${request.deviceType} + ' ' + ${request.deviceModel}">Тип пристрою</span></p>
+        <p><strong>Статус:</strong> <span class="status" th:text="${request.status}">Статус</span></p>
+        <p class="description" th:text="${#strings.abbreviate(request.issueDescription, 120)}">Опис проблеми</p>
     </a>
 </div>
-</div>
-
 
 </body>
 
