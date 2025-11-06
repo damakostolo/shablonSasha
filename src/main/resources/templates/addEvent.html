@@ -50,7 +50,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="locationId">Оберіть наявну локацію</label>
                             <select class="form-select" id="locationId" th:field="*{locationId}">
-                                <option th:value="">Створити нову локацію</option>
+                                <option th:value="${''}">Створити нову локацію</option>
                                 <option th:each="location : ${locations}" th:value="${location.id}"
                                         th:text="${location.name + ' — ' + location.address}"></option>
                             </select>
