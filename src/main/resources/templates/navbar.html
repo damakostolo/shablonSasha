@@ -1,9 +1,13 @@
-<nav class="navbar">
-    <div class="navbar-left">
-        <a href="/main" class="nav-link">Головна сторінка</a>
-    </div>
-    <div class="navbar-right">
-        <a href="/addCrypto" class="nav-link">Додавання товару</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">EventHub</a>
+        <div class="collapse navbar-collapse show">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/events}">Події</a>
+                </li>
+            </ul>
+            <a class="btn btn-outline-light" th:href="@{/events/new}">Створити подію</a>
+        </div>
     </div>
 </nav>
-
