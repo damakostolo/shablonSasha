@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Управління заявками</title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="navBar :: navbar"></div>
+
+<section class="content">
+    <h1>Заявки на технічну підтримку</h1>
+    <p class="lead">Користувачі надсилають заявки на допомогу, а адміністратор розподіляє їх між виконавцями.</p>
+
+    <p class="empty-state" th:if="${#lists.isEmpty(tickets)}">Поки що немає заявок. Створіть першу, щоб відстежувати роботу служби підтримки.</p>
+
+    <div class="ticket-container" th:if="${!#lists.isEmpty(tickets)}">
+        <div class="ticket-card" th:each="ticket : ${tickets}" th:id="${ticket.id}">
+            <a th:href="@{/tickets/{id}(id=${ticket.id})}">
+                <p class="ticket-title" th:text="${ticket.title}">Назва заявки</p>
+            </a>
+            <p>Статус: <span class="status" th:text="${ticket.status}">Статус</span></p>
+            <p>Виконавець: <span th:text="${ticket.assignedTo != null && !ticket.assignedTo.isEmpty() ? ticket.assignedTo : 'Не призначено'}">Не призначено</span></p>
+            <p>Заявник: <span th:text="${ticket.requesterName}">Ім'я заявника</span></p>
+            <p>Створено: <span th:text="${ticket.createdAt}">2024-01-01T10:00</span></p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

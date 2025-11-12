@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі заявки</title>
+    <link href="/css/ticketDetails.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="navBar :: navbar"></div>
+
+<section class="content">
+    <h1>Деталі заявки</h1>
+
+    <div th:if="${ticket != null}" th:id="${ticket.id}" class="ticket-card">
+        <p><strong>Тема:</strong> <span th:text="${ticket.title}">Назва заявки</span></p>
+        <p><strong>Опис:</strong> <span th:text="${ticket.description}">Опис проблеми</span></p>
+        <p><strong>Статус:</strong> <span class="status" th:text="${ticket.status}">Нова заявка</span></p>
+        <p><strong>Виконавець:</strong> <span class="assignee" th:text="${ticket.assignedTo != null && !ticket.assignedTo.isEmpty() ? ticket.assignedTo : 'Не призначено'}">Не призначено</span></p>
+        <p><strong>Заявник:</strong> <span th:text="${ticket.requesterName}">Ім'я заявника</span> (<span th:text="${ticket.requesterEmail}">email@example.com</span>)</p>
+        <p><strong>Створено:</strong> <span th:text="${ticket.createdAt}">2024-01-01T10:00</span></p>
+        <p th:if="${ticket.updatedAt != null}"><strong>Оновлено:</strong> <span th:text="${ticket.updatedAt}">2024-01-02T12:00</span></p>
+        <p th:if="${ticket.attachmentUrl != null && !ticket.attachmentUrl.isEmpty()}">
+            <strong>Додаткові матеріали:</strong>
+            <a th:href="${ticket.attachmentUrl}" target="_blank" rel="noopener">Відкрити</a>
+        </p>
+
+        <div class="ticket-actions">
+            <label for="statusSelect">Оновити статус:</label>
+            <select id="statusSelect" class="status-select">
+                <option th:each="statusOption : ${#arrays.asList('Нова заявка','У роботі','Очікує уточнення','Виконано','Відхилено')}"
+                        th:value="${statusOption}"
+                        th:text="${statusOption}"
+                        th:selected="${statusOption == ticket.status}">
+                </option>
+            </select>
+
+            <label for="assigneeInput">Виконавець:</label>
+            <input type="text" id="assigneeInput" class="assignee-input" placeholder="ПІБ виконавця"
+                   th:value="${ticket.assignedTo}">
+
+            <button type="button" class="update-btn" onclick="updateStatus(this)">Зберегти зміни</button>
+        </div>
+    </div>
+
+    <div th:if="${error != null}" class="error">
+        <p th:text="${error}">Заявку не знайдено</p>
+    </div>
+</section>
+
+<script src="/css/js/updateStatus.js"></script>
+</body>
+</html>
