@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Створення заявки</title>
+    <link href="/css/createTicket.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="navBar :: navbar"></div>
+
+<h1>Створити заявку на технічну підтримку</h1>
+
+<form action="/api/tickets" method="post">
+    <label for="title">Тема заявки:</label>
+    <input type="text" id="title" name="title" placeholder="Короткий опис проблеми" required>
+
+    <label for="requesterName">Ім'я заявника:</label>
+    <input type="text" id="requesterName" name="requesterName" placeholder="Ім'я та прізвище" required>
+
+    <label for="requesterEmail">Електронна адреса:</label>
+    <input type="email" id="requesterEmail" name="requesterEmail" placeholder="email@example.com" required>
+
+    <label for="description">Деталі звернення:</label>
+    <textarea id="description" name="description" placeholder="Опишіть проблему" required></textarea>
+
+    <label for="attachmentUrl">Посилання на додаткові матеріали (за бажанням):</label>
+    <input type="url" id="attachmentUrl" name="attachmentUrl" placeholder="https://...">
+
+    <button type="submit">Надіслати заявку</button>
+</form>
+</body>
+</html>
