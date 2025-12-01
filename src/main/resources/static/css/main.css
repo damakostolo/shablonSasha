@@ -9,47 +9,48 @@ body {
 
 h1 {
     text-align: center;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
 }
 
+.subtitle {
+    text-align: center;
+    margin: 5px 0 20px 0;
+    color: #666;
+}
 
 /* Контейнер карточек */
 .items-container {
-      display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
-        gap: 20px;
-        padding: 20px;
-        align-items: stretch; /* Растягивает карточки по высоте */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+    gap: 20px;
+    padding: 20px;
+    align-items: stretch;
 }
 
-
-/* Карточка товара */
+/* Карточка книги */
 .item-card {
-    max-width: 200px; /* Максимальная ширина контейнера */
-
-
-    width: 100%; /* Уберите фиксированную ширину */
-    max-width: 300px; /* Ограничение максимальной ширины */
-    margin: 0 auto; /* Центрирование карточки */
-
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    width: 250px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .item-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-4px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .item-card a {
-    margin: 0 0 10px;
-    font-size: 18px;
+    display: block;
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: bold;
     color: #222;
     text-decoration: none;
 }
@@ -59,42 +60,35 @@ h1 {
 }
 
 .item-card p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #555;
+    margin: 6px 0;
+    font-size: 15px;
+    color: #444;
 }
 
-/* Кнопки действий */
-.item-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-.item-actions button {
-    padding: 10px 20px;
+.muted {
+    color: #777;
     font-size: 14px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.decrease-btn {
-    background-color: #dc3545;
+.annotation {
+    margin-top: 10px;
+    color: #555;
+    line-height: 1.4;
 }
 
-.decrease-btn:hover {
-    background-color: #c82333;
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
 }
 
-.increase-btn {
-    background-color: #28a745;
-}
-
-.increase-btn:hover {
-    background-color: #218838;
+.genre-label {
+    background-color: #eef2ff;
+    color: #3f51b5;
+    border-radius: 12px;
+    padding: 4px 10px;
+    font-size: 12px;
 }
 
 /* Основной стиль для навбара */
@@ -102,18 +96,16 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333; /* Темный фон */
+    background-color: #333;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Левые и правые секции */
 .navbar-left, .navbar-right {
     display: flex;
     align-items: center;
 }
 
-/* Ссылки в навбаре */
 .nav-link {
     color: white;
     text-decoration: none;
@@ -122,12 +114,10 @@ h1 {
     transition: color 0.3s;
 }
 
-/* Стили при наведении на ссылки */
 .nav-link:hover {
-    color: #ffa500; /* Оранжевый при наведении */
+    color: #ffa500;
 }
 
-/* Контент под навбаром */
 .content {
     margin: 20px;
     font-family: Arial, sans-serif;

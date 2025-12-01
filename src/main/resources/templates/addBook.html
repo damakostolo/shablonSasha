@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Додавання книги</title>
+    <link href="/css/addPage.css" rel="stylesheet">
+</head>
+<body>
+<h1>Додавання книги</h1>
+
+<!-- Форма для відправки POST-запиту -->
+<form action="/api/books" method="post">
+    <label for="title">Назва книги:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Автор:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="year">Рік видання:</label>
+    <input type="number" id="year" name="year" min="0" required>
+
+    <label for="genres">Жанри (перелічіть через кому):</label>
+    <input type="text" id="genres" name="genres" placeholder="фантастика, драма" required>
+
+    <label for="annotation">Анотація:</label>
+    <textarea id="annotation" name="annotation" required></textarea>
+
+    <label for="coverUrl">Посилання на обкладинку (необов'язково):</label>
+    <input type="text" id="coverUrl" name="coverUrl">
+
+    <button type="submit">Зберегти</button>
+</form>
+</body>
+</html>
