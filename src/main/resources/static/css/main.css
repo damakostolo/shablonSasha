@@ -1,134 +1,124 @@
-/* Общие стили */
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
+    background: linear-gradient(135deg, #f2f5ff, #e8f0ff);
+    color: #2e2e2e;
 }
 
 h1 {
     text-align: center;
-    margin: 20px 0;
+    margin: 25px 0 5px;
+    color: #3b4a88;
+    font-weight: 700;
 }
 
-
-/* Контейнер карточек */
-.items-container {
-      display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
-        gap: 20px;
-        padding: 20px;
-        align-items: stretch; /* Растягивает карточки по высоте */
-}
-
-
-/* Карточка товара */
-.item-card {
-    max-width: 200px; /* Максимальная ширина контейнера */
-
-
-    width: 100%; /* Уберите фиксированную ширину */
-    max-width: 300px; /* Ограничение максимальной ширины */
-    margin: 0 auto; /* Центрирование карточки */
-
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 250px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.subtitle {
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 0 0 25px;
+    color: #6574a8;
+    font-size: 16px;
+}
+
+
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+    gap: 22px;
+    padding: 20px;
+}
+
+
+.item-card {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(50, 70, 150, 0.12);
+    text-align: left;
+    transition: 0.25s ease;
+    border: 1px solid rgba(150, 160, 200, 0.2);
 }
 
 .item-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(50, 70, 150, 0.15);
 }
 
 .item-card a {
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: #222;
+    display: block;
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2f3a72;
     text-decoration: none;
 }
 
-.item-card a:hover{
+.item-card a:hover {
+    color: #4a6cf7;
     text-decoration: underline;
 }
 
 .item-card p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #555;
+    margin: 6px 0;
+    font-size: 15px;
+    color: #4a4a4a;
 }
 
-/* Кнопки действий */
-.item-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-.item-actions button {
-    padding: 10px 20px;
+.muted {
     font-size: 14px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    color: #7a7f9b;
 }
 
-.decrease-btn {
-    background-color: #dc3545;
+.annotation {
+    margin-top: 10px;
+    color: #555b78;
+    line-height: 1.45;
 }
 
-.decrease-btn:hover {
-    background-color: #c82333;
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
 }
 
-.increase-btn {
-    background-color: #28a745;
+.genre-label {
+    padding: 5px 12px;
+    font-size: 12px;
+    border-radius: 12px;
+    background: #e8ecff;
+    color: #4a6cf7;
+    font-weight: 500;
 }
 
-.increase-btn:hover {
-    background-color: #218838;
-}
 
-/* Основной стиль для навбара */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333; /* Темный фон */
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: #2f3a72;
+    padding: 12px 25px;
+    box-shadow: 0 2px 6px rgba(20, 30, 70, 0.3);
 }
 
-/* Левые и правые секции */
-.navbar-left, .navbar-right {
-    display: flex;
-    align-items: center;
-}
-
-/* Ссылки в навбаре */
 .nav-link {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
+    margin: 0 12px;
     font-size: 18px;
-    transition: color 0.3s;
+    color: #e6e9ff;
+    text-decoration: none;
+    transition: 0.25s;
 }
 
-/* Стили при наведении на ссылки */
 .nav-link:hover {
-    color: #ffa500; /* Оранжевый при наведении */
+    color: #ffcf70;
 }
 
-/* Контент под навбаром */
+
 .content {
     margin: 20px;
-    font-family: Arial, sans-serif;
 }

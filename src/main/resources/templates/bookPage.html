@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі книги</title>
+    <link href="/css/itemPage.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- Навигационная панель -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="/main" class="nav-link">Каталог</a>
+    </div>
+    <div class="navbar-right">
+        <a href="/addBook" class="nav-link">Додати книгу</a>
+    </div>
+</nav>
+
+
+<h1>Деталі книги</h1>
+
+<div class="book-details" th:if="${book != null}">
+    <div class="cover" th:if="${book.coverUrl}">
+        <img th:src="${book.coverUrl}" alt="Обкладинка книги" style="max-width: 400px; max-height: 400px;">
+    </div>
+    <p><strong>Назва:</strong> <span th:text="${book.title}">Назва книги</span></p>
+    <p><strong>Автор:</strong> <span th:text="${book.author}">Автор</span></p>
+    <p><strong>Рік видання:</strong> <span th:text="${book.publicationYear}">0000</span></p>
+    <p><strong>Жанри:</strong>
+        <span class="genre-label" th:each="genre : ${book.genreList}" th:text="${genre}">Жанр</span>
+    </p>
+    <p><strong>Анотація:</strong></p>
+    <p th:text="${book.annotation}">Опис книги</p>
+
+</div>
+
+<div class="error" th:if="${error != null}">
+    <p th:text="${error}"></p>
+</div>
+</body>
+</html>
