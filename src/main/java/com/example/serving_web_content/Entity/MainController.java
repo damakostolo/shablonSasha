@@ -1,6 +1,5 @@
-package com.example.serving_web_content.controller;
+package com.example.serving_web_content.Entity;
 
-import com.example.serving_web_content.Entity.Book;
 import com.example.serving_web_content.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
