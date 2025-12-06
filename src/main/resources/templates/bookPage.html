@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі книги</title>
+    <link href="/css/itemPage.css" rel="stylesheet">
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand">LibraFlow</div>
+    <div class="navbar-links">
+        <a href="/main" class="nav-link">Каталог</a>
+        <a href="/addBook" class="nav-link primary">Додати книгу</a>
+    </div>
+</nav>
+
+<section class="book-wrapper" th:if="${book != null}">
+    <div class="cover">
+        <img th:if="${book.coverUrl}" th:src="${book.coverUrl}" th:alt="${book.title}" loading="lazy"/>
+        <div class="empty-cover" th:unless="${book.coverUrl}">Обкладинка відсутня</div>
+    </div>
+    <div class="details">
+        <p class="eyebrow">Книга</p>
+        <h1 th:text="${book.title}">Назва книги</h1>
+        <p class="meta">Автор <span th:text="${book.author}">Автор</span> · <span th:text="${book.publicationYear}">0000</span></p>
+        <div class="genres">
+            <span class="genre-label" th:each="genre : ${book.genreList}" th:text="${genre}">Жанр</span>
+        </div>
+        <div class="annotation">
+            <h3>Анотація</h3>
+            <p th:text="${book.annotation}">Опис книги</p>
+        </div>
+    </div>
+</section>
+
+<div class="error" th:if="${error != null}">
+    <p th:text="${error}"></p>
+</div>
+</body>
+</html>

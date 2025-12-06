@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати книгу</title>
+    <link href="/css/addPage.css" rel="stylesheet">
+</head>
+<body>
+<section class="panel">
+    <header>
+        <h1>Нова книга</h1>
+        <p>Заповніть усі поля, завантажте обкладинку та додайте видання в каталог.</p>
+    </header>
+
+    <form action="/api/books" method="post" enctype="multipart/form-data" class="book-form">
+        <div class="field">
+            <label for="title">Назва</label>
+            <input type="text" id="title" name="title" placeholder="Наприклад, Дюна" required>
+        </div>
+
+        <div class="field double">
+            <div>
+                <label for="author">Автор</label>
+                <input type="text" id="author" name="author" placeholder="Френк Герберт" required>
+            </div>
+            <div>
+                <label for="year">Рік видання</label>
+                <input type="number" id="year" name="year" min="0" required>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="genres">Жанри <span class="hint">(перелічіть через кому)</span></label>
+            <input type="text" id="genres" name="genres" placeholder="фантастика, драма" required>
+        </div>
+
+        <div class="field">
+            <label for="annotation">Анотація</label>
+            <textarea id="annotation" name="annotation" rows="5" placeholder="Коротко опишіть сюжет" required></textarea>
+        </div>
+
+        <div class="field upload">
+            <label for="cover">Обкладинка <span class="hint">(jpg, png)</span></label>
+            <input type="file" id="cover" name="cover" accept="image/*" required>
+        </div>
+
+        <div class="actions">
+            <a href="/main" class="ghost">Скасувати</a>
+            <button type="submit">Зберегти книгу</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

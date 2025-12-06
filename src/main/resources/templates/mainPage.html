@@ -3,38 +3,54 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Головна сторінка</title>
+    <title>Бібліотека</title>
     <link href="/css/main.css" rel="stylesheet">
 
 </head>
 
 <body>
-<!-- Навигационная панель -->
 <nav class="navbar">
-    <div class="navbar-left">
-        <a href="/main" class="nav-link">Головна сторінка</a>
-    </div>
-    <div class="navbar-right">
-        <a href="/addItem" class="nav-link">Додавання товару</a>
+    <div class="brand">LibraFlow</div>
+    <div class="navbar-links">
+        <a href="/main" class="nav-link">Каталог</a>
+        <a href="/addBook" class="nav-link primary">Додати книгу</a>
     </div>
 </nav>
 
-<h1>Товари у магазині</h1>
-
-<!-- Секция карточек товаров -->
-<div class="items-container" th:each="item : ${items}">
-    <div class="item-card" th:id="${item.id}">
-        <a th:text="${item.name}" th:href="@{/itemPage/{id}(id=${item.id})}">Назва товару</a>
-        <p>Кількість: <span class="amount" th:text="${item.amount}">Немає даних</span></p>
-        <div class="item-actions">
-            <button class="decrease-btn" onclick="updateAmount(this, -1)">-</button>
-            <input type="number" value="1" min="1" class="quantity-input">
-            <button class="increase-btn" onclick="updateAmount(this, 1)">+</button>
-        </div>
+<header class="hero">
+    <div class="hero-copy">
+        <p class="eyebrow">Цифрова колекція</p>
+        <h1>Розвивайте бібліотеку без хаосу</h1>
+        <p class="lead">Зберігайте видання з обкладинкою, жанрами та описом, переглядайте їх у єдиному каталозі.</p>
     </div>
-</div>
+    <div class="hero-card">
+        <p>Нове надходження</p>
+        <div class="placeholder-cover"></div>
+        <small>Додавайте книги із власними обкладинками і переглядайте їх одразу після збереження.</small>
+    </div>
+</header>
 
-<script src="/css/js/main.js"></script>
+<section class="items-container" th:if="${books}">
+    <article class="item-card" th:each="book : ${books}" th:id="${book.id}">
+        <div class="cover-wrap">
+            <img class="cover" th:if="${book.coverUrl}" th:src="${book.coverUrl}" th:alt="${book.title}" loading="lazy"/>
+            <div class="cover fallback" th:unless="${book.coverUrl}">Без обкладинки</div>
+        </div>
+        <div class="content">
+            <a th:text="${book.title}" th:href="@{/books/{id}(id=${book.id})}" class="title">Назва книги</a>
+            <p class="muted">Автор <span th:text="${book.author}">Автор</span> · <span th:text="${book.publicationYear}">0000</span></p>
+            <div class="genres">
+                <span class="genre-label" th:each="genre : ${book.genreList}" th:text="${genre}">Жанр</span>
+            </div>
+            <p class="annotation" th:text="${#strings.abbreviate(book.annotation, 110)}">Коротка анотація</p>
+        </div>
+    </article>
+</section>
+
+<div class="empty" th:if="${#lists.isEmpty(books)}">
+    <p>Поки що немає збережених книг. Додайте перше видання, щоб побачити його у каталозі.</p>
+    <a href="/addBook" class="cta">Додати книгу</a>
+</div>
 
 </body>
 
