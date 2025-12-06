@@ -1,13 +1,12 @@
 package com.example.serving_web_content.controller;
 
-import com.example.serving_web_content.Entity.Item;
-import com.example.serving_web_content.repository.ItemRepository;
+import com.example.serving_web_content.Entity.Book;
+import com.example.serving_web_content.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -15,35 +14,31 @@ import java.util.Optional;
 public class MainController {
 
     @Autowired
-    private ItemRepository itemRepository;
+    private BookRepository bookRepository;
 
-    @GetMapping("/main")
+    @GetMapping({"/", "/main"})
     public String mainPage(Model model) {
-        Iterable<Item> items = itemRepository.findAll();
-        System.out.println("Найденные товары: " + items);
-        model.addAttribute("items", items);
+        Iterable<Book> books = bookRepository.findAll();
+        model.addAttribute("books", books);
         return "mainPage";
     }
 
-    @GetMapping("/addItem")
-    public String addItem() {
-        return "addItem";
+    @GetMapping("/addBook")
+    public String addBook() {
+        return "addBook";
     }
 
-    @GetMapping("/itemPage/{id}")
-    public String itemPage(@PathVariable Long id, Model model) {
-        // Находим товар по ID
-        Optional<Item> optionalItem = itemRepository.findById(id);
+    @GetMapping("/books/{id}")
+    public String bookPage(@PathVariable Long id, Model model) {
+        Optional<Book> optionalBook = bookRepository.findById(id);
 
-        // Проверяем, найден ли товар
-        if (optionalItem.isPresent()) {
-            Item item = optionalItem.get();
-            model.addAttribute("item", item); // Добавляем товар в модель
+        if (optionalBook.isPresent()) {
+            Book book = optionalBook.get();
+            model.addAttribute("book", book);
         } else {
-            System.out.println("Товар с ID " + id + " не найден.");
-            model.addAttribute("error", "Товар не найден."); // Добавляем сообщение об ошибке
+            model.addAttribute("error", "Книгу не знайдено.");
         }
 
-        return "itemPage"; // Возвращаем название HTML-шаблона
+        return "bookPage";
     }
 }

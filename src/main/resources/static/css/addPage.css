@@ -1,86 +1,155 @@
-/* Общий стиль для всей страницы */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at 18% 20%, #f5f7ff 0, #eef2ff 40%, #e8edf6 80%);
+    color: #0f1d33;
     margin: 0;
-    padding: 0;
+    padding: 40px 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.panel {
+    width: min(900px, 100%);
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(15, 29, 51, 0.14);
+    border: 1px solid #dfe5f0;
+    background-image: linear-gradient(135deg, rgba(53, 81, 255, 0.05), rgba(41, 199, 197, 0.05));
+}
+
+header h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+}
+
+header p {
+    margin: 0 0 20px;
+    color: #3d4761;
+}
+
+.book-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    color: #333;
+    gap: 18px;
 }
 
-/* Заголовок */
-h1 {
-    margin-top: 20px;
-    color: #4CAF50;
-    font-size: 2em;
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Форма */
-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.field.double {
+    flex-direction: row;
+    gap: 14px;
 }
 
-/* Метки */
+.field.double > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-    color: #555;
+    font-weight: 700;
+    color: #1d2c49;
 }
 
-/* Поля ввода */
+.hint {
+    font-weight: 500;
+    font-size: 12px;
+    color: #7a8496;
+}
+
 input[type="text"],
 input[type="number"],
-textarea {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
+textarea,
+input[type="file"] {
+    border-radius: 12px;
+    border: 1px solid #d7deeb;
+    padding: 12px 14px;
+    font-size: 15px;
+    background: #f9fbff;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.1s ease;
 }
 
-/* Текстовая область */
+input:focus,
+textarea:focus,
+input[type="file"]:focus {
+    outline: none;
+    border-color: #3551ff;
+    box-shadow: 0 0 0 3px rgba(53, 81, 255, 0.16);
+    background: #fff;
+    transform: translateY(-1px);
+}
+
 textarea {
-    height: 80px;
     resize: vertical;
+    min-height: 120px;
 }
 
-/* Кнопка */
+.upload input[type="file"] {
+    background: #f0f4ff;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 4px;
-    font-size: 1em;
+    border-radius: 12px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #3551ff, #29c7c5);
+    color: #fff;
+    font-weight: 800;
+    font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 10px 30px rgba(41, 124, 255, 0.28);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 36px rgba(41, 124, 255, 0.33);
 }
 
-/* Адаптация для мобильных устройств */
-@media (max-width: 500px) {
-    form {
-        padding: 15px;
+.ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: #0f1d33;
+    font-weight: 700;
+    text-decoration: none;
+    background: #eef3ff;
+    border: 1px solid #d7deeb;
+}
+
+@media (max-width: 720px) {
+    body {
+        padding: 20px;
     }
 
-    h1 {
-        font-size: 1.5em;
+    .field.double {
+        flex-direction: column;
     }
 
-    button {
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions button,
+    .actions .ghost {
         width: 100%;
+        justify-content: center;
     }
 }
